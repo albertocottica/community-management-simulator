@@ -1,0 +1,12 @@
+import csv
+dirPath = '/Users/albertocottica/github/local/community-management-simulator/Data/'
+folder = []
+
+with open (dirPath + 'Online_communities_v3 intimacy-strength vs. policies all turtles-table.csv', 'r') as csvFile:
+    csvReader = csv.DictReader (csvFile, delimiter = ',', quotechar = '"')
+    for row in csvReader:
+        folder.append(row)
+        
+
+
+ 

@@ -1,0 +1,130 @@
+>>> 
+chattiness: .1; intimacy strenght: 1
+H0: ms_avg_gini(onboard) = ms_avg_gini_none => -13.2817151428
+H0: ms_avg_gini(engage) = ms_avg_gini_none => -34.882557658
+H0: ms_avg_gini(both) = ms_avg_gini_none => -41.7284796516
+chattiness: .1; intimacy strenght: 5
+H0: ms_avg_gini(onboard) = ms_avg_gini_none => 175.721666256
+H0: ms_avg_gini(engage) = ms_avg_gini_none => -60.7357642268
+H0: ms_avg_gini(both) = ms_avg_gini_none => 299.488064463
+chattiness: .1; intimacy strenght: 11
+H0: ms_avg_gini(onboard) = ms_avg_gini_none => 235.774664041
+H0: ms_avg_gini(engage) = ms_avg_gini_none => -155.505874726
+H0: ms_avg_gini(both) = ms_avg_gini_none => 241.566455902
+chattiness: .15; intimacy strenght: 1
+H0: ms_avg_gini(onboard) = ms_avg_gini_none => 2.66307379389
+H0: ms_avg_gini(engage) = ms_avg_gini_none => -7.86088801958
+H0: ms_avg_gini(both) = ms_avg_gini_none => -6.97857184071
+chattiness: .15; intimacy strenght: 5
+H0: ms_avg_gini(onboard) = ms_avg_gini_none => -47.2845212283
+H0: ms_avg_gini(engage) = ms_avg_gini_none => 5.16801385988
+H0: ms_avg_gini(both) = ms_avg_gini_none => -374.059840934
+chattiness: .15; intimacy strenght: 11
+H0: ms_avg_gini(onboard) = ms_avg_gini_none => -316.250733284
+H0: ms_avg_gini(engage) = ms_avg_gini_none => 3.3693971816
+H0: ms_avg_gini(both) = ms_avg_gini_none => -453.05089824
+chattiness: .4; intimacy strenght: 1
+H0: ms_avg_gini(onboard) = ms_avg_gini_none => -1.07103820783
+H0: ms_avg_gini(engage) = ms_avg_gini_none => -25.5734904994
+H0: ms_avg_gini(both) = ms_avg_gini_none => -29.3100781674
+chattiness: .4; intimacy strenght: 5
+H0: ms_avg_gini(onboard) = ms_avg_gini_none => -2.95632413246
+H0: ms_avg_gini(engage) = ms_avg_gini_none => -130.00877911
+H0: ms_avg_gini(both) = ms_avg_gini_none => -136.165234754
+chattiness: .4; intimacy strenght: 11
+H0: ms_avg_gini(onboard) = ms_avg_gini_none => -13.9046494156
+H0: ms_avg_gini(engage) = ms_avg_gini_none => -147.13477464
+H0: ms_avg_gini(both) = ms_avg_gini_none => -152.440235286
+>>> ================================ RESTART ================================
+>>> 
+chattiness: .1; intimacy strenght: 1
+***** inequality in membership strength ********
+H0: ms_avg_gini(onboard) = ms_avg_gini_none => -13.2817151428
+H0: ms_avg_gini(engage) = ms_avg_gini_none => -34.882557658
+H0: ms_avg_gini(both) = ms_avg_gini_none => -41.7284796516
+***** inequality in number of comments ********
+H0: ms_avg_gini(onboard) = ms_avg_gini_none => -13.2817151428
+H0: ms_avg_gini(engage) = ms_avg_gini_none => -34.882557658
+H0: ms_avg_gini(both) = ms_avg_gini_none => -41.7284796516
+******************************************************************
+chattiness: .1; intimacy strenght: 5
+***** inequality in membership strength ********
+H0: ms_avg_gini(onboard) = ms_avg_gini_none => 175.721666256
+H0: ms_avg_gini(engage) = ms_avg_gini_none => -60.7357642268
+H0: ms_avg_gini(both) = ms_avg_gini_none => 299.488064463
+***** inequality in number of comments ********
+H0: ms_avg_gini(onboard) = ms_avg_gini_none => 175.721666256
+H0: ms_avg_gini(engage) = ms_avg_gini_none => -60.7357642268
+H0: ms_avg_gini(both) = ms_avg_gini_none => 299.488064463
+******************************************************************
+chattiness: .1; intimacy strenght: 11
+***** inequality in membership strength ********
+H0: ms_avg_gini(onboard) = ms_avg_gini_none => 235.774664041
+H0: ms_avg_gini(engage) = ms_avg_gini_none => -155.505874726
+H0: ms_avg_gini(both) = ms_avg_gini_none => 241.566455902
+***** inequality in number of comments ********
+H0: ms_avg_gini(onboard) = ms_avg_gini_none => 235.774664041
+H0: ms_avg_gini(engage) = ms_avg_gini_none => -155.505874726
+H0: ms_avg_gini(both) = ms_avg_gini_none => 241.566455902
+******************************************************************
+chattiness: .15; intimacy strenght: 1
+***** inequality in membership strength ********
+H0: ms_avg_gini(onboard) = ms_avg_gini_none => 2.66307379389
+H0: ms_avg_gini(engage) = ms_avg_gini_none => -7.86088801958
+H0: ms_avg_gini(both) = ms_avg_gini_none => -6.97857184071
+***** inequality in number of comments ********
+H0: ms_avg_gini(onboard) = ms_avg_gini_none => 2.66307379389
+H0: ms_avg_gini(engage) = ms_avg_gini_none => -7.86088801958
+H0: ms_avg_gini(both) = ms_avg_gini_none => -6.97857184071
+******************************************************************
+chattiness: .15; intimacy strenght: 5
+***** inequality in membership strength ********
+H0: ms_avg_gini(onboard) = ms_avg_gini_none => -47.2845212283
+H0: ms_avg_gini(engage) = ms_avg_gini_none => 5.16801385988
+H0: ms_avg_gini(both) = ms_avg_gini_none => -374.059840934
+***** inequality in number of comments ********
+H0: ms_avg_gini(onboard) = ms_avg_gini_none => -47.2845212283
+H0: ms_avg_gini(engage) = ms_avg_gini_none => 5.16801385988
+H0: ms_avg_gini(both) = ms_avg_gini_none => -374.059840934
+******************************************************************
+chattiness: .15; intimacy strenght: 11
+***** inequality in membership strength ********
+H0: ms_avg_gini(onboard) = ms_avg_gini_none => -316.250733284
+H0: ms_avg_gini(engage) = ms_avg_gini_none => 3.3693971816
+H0: ms_avg_gini(both) = ms_avg_gini_none => -453.05089824
+***** inequality in number of comments ********
+H0: ms_avg_gini(onboard) = ms_avg_gini_none => -316.250733284
+H0: ms_avg_gini(engage) = ms_avg_gini_none => 3.3693971816
+H0: ms_avg_gini(both) = ms_avg_gini_none => -453.05089824
+******************************************************************
+chattiness: .4; intimacy strenght: 1
+***** inequality in membership strength ********
+H0: ms_avg_gini(onboard) = ms_avg_gini_none => -1.07103820783
+H0: ms_avg_gini(engage) = ms_avg_gini_none => -25.5734904994
+H0: ms_avg_gini(both) = ms_avg_gini_none => -29.3100781674
+***** inequality in number of comments ********
+H0: ms_avg_gini(onboard) = ms_avg_gini_none => -1.07103820783
+H0: ms_avg_gini(engage) = ms_avg_gini_none => -25.5734904994
+H0: ms_avg_gini(both) = ms_avg_gini_none => -29.3100781674
+******************************************************************
+chattiness: .4; intimacy strenght: 5
+***** inequality in membership strength ********
+H0: ms_avg_gini(onboard) = ms_avg_gini_none => -2.95632413246
+H0: ms_avg_gini(engage) = ms_avg_gini_none => -130.00877911
+H0: ms_avg_gini(both) = ms_avg_gini_none => -136.165234754
+***** inequality in number of comments ********
+H0: ms_avg_gini(onboard) = ms_avg_gini_none => -2.95632413246
+H0: ms_avg_gini(engage) = ms_avg_gini_none => -130.00877911
+H0: ms_avg_gini(both) = ms_avg_gini_none => -136.165234754
+******************************************************************
+chattiness: .4; intimacy strenght: 11
+***** inequality in membership strength ********
+H0: ms_avg_gini(onboard) = ms_avg_gini_none => -13.9046494156
+H0: ms_avg_gini(engage) = ms_avg_gini_none => -147.13477464
+H0: ms_avg_gini(both) = ms_avg_gini_none => -152.440235286
+***** inequality in number of comments ********
+H0: ms_avg_gini(onboard) = ms_avg_gini_none => -13.9046494156
+H0: ms_avg_gini(engage) = ms_avg_gini_none => -147.13477464
+H0: ms_avg_gini(both) = ms_avg_gini_none => -152.440235286
+******************************************************************
+>>> 

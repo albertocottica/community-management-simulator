@@ -1,0 +1,300 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}/Users/albertocottica/github/local/community-management-simulator/Data/Prepare_data.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}27 Nov 2016, 17:43:58
+
+{com}. do "/var/folders/n8/szbcd5613wg9bk3r40lyrdlr0000gn/T//SD00314.000000"
+{txt}
+{com}. insheet using "/Users/albertocottica/github/local/community-management-simulator/Data/dataByTurtle.csv", comma
+{txt}(13 vars, 604800 obs)
+
+{com}. 
+. * Goal: compute in-run Gini coefficients and their SE for ms and nc
+. 
+. svyset _n
+
+      {txt}pweight:{col 16}<none>
+          VCE:{col 16}{res}linearized
+  {txt}Single unit:{col 16}{res}missing
+     {txt}Strata 1:{col 16}<one>
+         SU 1:{col 16}<observations>
+        FPC 1:{col 16}<zero>
+{p2colreset}{...}
+
+{com}. 
+. quietly separate ms , by (run)
+{txt}
+{com}. quietly separate nc, by (run)
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/n8/szbcd5613wg9bk3r40lyrdlr0000gn/T//SD00314.000000"
+{txt}
+{com}. * create new variables to store the values
+. generate ms_gini = 0
+{txt}
+{com}. generate ms_se_gini = 0
+{txt}
+{com}. generate nc_gini = 0
+{txt}
+{com}. generate nc_se_gini = 0
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/n8/szbcd5613wg9bk3r40lyrdlr0000gn/T//SD00314.000000"
+{txt}
+{com}. forval i=1/4 {c -(}
+{txt}  2{com}.         quietly svylorenz ms`i' 
+{txt}  3{com}.         replace ms_gini = e(gini) if runnumber == `i'
+{txt}  4{com}.         replace ms_se_gini = e(se_gini) if runnumber == `i'
+{txt}  5{com}.         quietly svylorenz nc`i' 
+{txt}  6{com}.         replace nc_gini = e(gini) if runnumber == `i'
+{txt}  7{com}.         replace nc_se_gini = e(se_gini) if runnumber == `i'
+{txt}  8{com}.         * drop observations, reducing dimensionality
+.         quietly drop if runnumber == `i' & id != 1 
+{txt}  9{com}.         {c )-}
+{txt}(700 real changes made)
+(700 real changes made)
+(700 real changes made)
+(700 real changes made)
+(700 real changes made)
+(700 real changes made)
+(700 real changes made)
+(700 real changes made)
+(700 real changes made)
+(700 real changes made)
+(700 real changes made)
+(700 real changes made)
+(700 real changes made)
+(700 real changes made)
+(700 real changes made)
+(700 real changes made)
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "/var/folders/n8/szbcd5613wg9bk3r40lyrdlr0000gn/T//SD00314.000000"
+{txt}
+{com}. forval i=5/200 {c -(}
+{txt}  2{com}.         display `i'
+{txt}  3{com}.         quietly svylorenz ms`i' 
+{txt}  4{com}.         quietly replace ms_gini = e(gini) if runnumber == `i'
+{txt}  5{com}.         quietly replace ms_se_gini = e(se_gini) if runnumber == `i'
+{txt}  6{com}.         quietly svylorenz nc`i' 
+{txt}  7{com}.         quietly replace nc_gini = e(gini) if runnumber == `i'
+{txt}  8{com}.         quietly replace nc_se_gini = e(se_gini) if runnumber == `i'
+{txt}  9{com}.         * drop observations, reducing dimensionality
+.         quietly drop if runnumber == `i' & id != 1 
+{txt} 10{com}.         * drop already used ms_n and nc_n variables, further reducing dimensionality
+.         quietly drop ms`i'
+{txt} 11{com}.         quietly drop nc`i'
+{txt} 12{com}.         {c )-}
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+{txt}
+{com}. save "/Users/albertocottica/github/local/community-management-simulator/Data/data-w-gini-2.dta", replace
+{txt}(note: file /Users/albertocottica/github/local/community-management-simulator/Data/data-w-gini-2.dta not found)
+file /Users/albertocottica/github/local/community-management-simulator/Data/data-w-gini-2.dta saved
+
+{com}. 
+{txt}end of do-file
+
+{com}. 
