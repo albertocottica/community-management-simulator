@@ -1,9 +1,9 @@
-globals [ total-membership-strength decay total-comments ]
+globals [ total-membership-strength decay total-comments chattiness ]
 
 turtles-own [my-comments]
 
 breed [ members member ]
-members-own [ extra-chattiness membership-strength join-date latest-interaction active? chatty? done?] ;; my-chattiness is superseded by chatty?
+members-own [ extra-chattiness my-chattiness membership-strength join-date latest-interaction active? chatty? done?]
 
 breed [ managers manager ]
 
@@ -20,6 +20,12 @@ to setup
   reset-ticks
   set decay 1 / 100
   set-default-shape turtles "circle"
+  ;; the chooser is in terms of probabilities. These values enter the logistic function to generate those probabilities.
+  if global-chattiness = 0.01 [ set chattiness -4.59 ]
+  if global-chattiness = 0.02 [ set chattiness -3.892 ]
+  if global-chattiness = 0.1 [ set chattiness -2.196 ]
+  if global-chattiness = 0.2 [ set chattiness -1.386 ]
+  if global-chattiness = 0.4 [ set chattiness -0.405 ]
   ;; the initial network is a clique of numerosity founders + 1 manager
   create-managers 1 [ set color red  set my-comments 0]
   repeat founders [
@@ -54,10 +60,13 @@ to initialize-member
     set chatty? False
     set done? False
     set my-comments 0
-    if randomised-chattiness [
-      if random-float 1.0 < 0.5 [ ;; half the members are chatty
-        set chatty? True
+    ifelse randomised-chattiness [
+      let getrandomchattiness random-normal 0 1
+      if getrandomchattiness > 0.5 [set chatty? True ]
+      set my-chattiness 1 / (1 + exp (- chattiness - getrandomchattiness ))
       ]
+    [
+    set my-chattiness 1 / (1 + exp (- chattiness))
     ]
     ;; create links of both types from the manager, with comments and strength set to 0.
     ;; this way, when management really happens, all I need to do is to update the variables
@@ -80,22 +89,11 @@ to converse
     if my-in-interaction-links with [ latest = ticks - 1 ] != nobody [ ;; need to distinguish between in-interaction-links of community managers and those of members. Need an agentset with two "with" conditions!
       set extra-chattiness 0.2
       ]
-
-    ifelse randomised-chattiness = True [
-      let my-chattiness global-chattiness / 2 ;; this is for when chatty? == False
-      if chatty? [
-        set my-chattiness global-chattiness * 3 / 2 ;; chatty individuals are MUCH more chatty than shy ones
-        ]
-      if random-float 1.0 <= my-chattiness + extra-chattiness [
-        connect
-        ]
-    ]
-    [ if random-float 1.0 <= global-chattiness + extra-chattiness [
-        connect
-        ]
+    if random-float 1.0 <= my-chattiness + extra-chattiness [
+    connect
     ]
     set extra-chattiness 0 ;; after the decision to connect reset the extra chattiness
-    ]
+  ]
 end
 
 to connect
@@ -382,7 +380,7 @@ SWITCH
 261
 onboard
 onboard
-0
+1
 1
 -1000
 
@@ -413,7 +411,7 @@ true
 false
 "" ""
 PENS
-"pen-0" 1.0 2 -7500403 true "" ";; if not plot? [ stop ]\n\nplot-pen-reset  ;; erase what we plotted before\n\nask members [\n  ifelse chatty? [\n    set-plot-pen-color lime\n     ]\n   [\n     set-plot-pen-color black\n     ]\n   plotxy who\n   membership-strength\n     ]"
+"pen-0" 1.0 2 -7500403 true "" ";; if not plot? [ stop ]\n\nplot-pen-reset  ;; erase what we plotted before\n\nask members [\n   ifelse active? [\n     set-plot-pen-color black\n     plotxy who\n     membership-strength\n     ]\n     [\n     set-plot-pen-color red\n     plotxy who\n     membership-strength\n     ]\n  ]"
 
 SLIDER
 18
@@ -424,7 +422,7 @@ num-members
 num-members
 100
 1000
-700
+600
 50
 1
 NIL
@@ -522,7 +520,7 @@ CHOOSER
 priority
 priority
 "more active" "newer"
-1
+0
 
 CHOOSER
 21
@@ -532,7 +530,7 @@ CHOOSER
 capacity
 capacity
 1 2 10 50 100
-2
+4
 
 MONITOR
 1053
@@ -544,6 +542,24 @@ Mgmt comms
 17
 1
 11
+
+PLOT
+365
+495
+565
+645
+Chattiness
+NIL
+NIL
+0.0
+10.0
+0.0
+1.0
+true
+false
+"" ""
+PENS
+"default" 1.0 2 -16777216 true "" "histogram my-chattiness of [members]"
 
 @#$#@#$#@
 ## WHAT IS IT?
@@ -1067,48 +1083,6 @@ NetLogo 5.3.1
       <value value="0.4"/>
     </enumeratedValueSet>
     <enumeratedValueSet variable="engage">
-      <value value="true"/>
-    </enumeratedValueSet>
-  </experiment>
-  <experiment name="intimacy-strength vs. policies vs. priority vs. randomised-chattiness" repetitions="24" runMetricsEveryStep="false">
-    <setup>setup</setup>
-    <go>go</go>
-    <metric>total-membership-strength</metric>
-    <metric>total-comments</metric>
-    <metric>dropouts</metric>
-    <metric>mgmt-effort</metric>
-    <metric>map idlist sort members</metric>
-    <metric>map mslist sort members</metric>
-    <metric>map nclist sort members</metric>
-    <enumeratedValueSet variable="founders">
-      <value value="2"/>
-    </enumeratedValueSet>
-    <enumeratedValueSet variable="global-chattiness">
-      <value value="0.1"/>
-      <value value="0.2"/>
-      <value value="0.4"/>
-    </enumeratedValueSet>
-    <enumeratedValueSet variable="num-members">
-      <value value="700"/>
-    </enumeratedValueSet>
-    <enumeratedValueSet variable="onboard">
-      <value value="false"/>
-      <value value="true"/>
-    </enumeratedValueSet>
-    <enumeratedValueSet variable="intimacy-strength">
-      <value value="1"/>
-      <value value="5"/>
-      <value value="11"/>
-    </enumeratedValueSet>
-    <enumeratedValueSet variable="engage">
-      <value value="true"/>
-    </enumeratedValueSet>
-    <enumeratedValueSet variable="priority">
-      <value value="&quot;more active&quot;"/>
-      <value value="&quot;newer&quot;"/>
-    </enumeratedValueSet>
-    <enumeratedValueSet variable="randomised-chattiness">
-      <value value="false"/>
       <value value="true"/>
     </enumeratedValueSet>
   </experiment>
