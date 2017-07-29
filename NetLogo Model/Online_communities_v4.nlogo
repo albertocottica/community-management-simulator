@@ -6,6 +6,7 @@ breed [ members member ]
 members-own [ extra-chattiness my-chattiness membership-strength join-date latest-interaction active? chatty? done?]
 
 breed [ managers manager ]
+managers-own [ times-constrained ]
 
 directed-link-breed [ intimacy-links intimacy-link ]
 intimacy-links-own [ strength ]
@@ -207,8 +208,7 @@ to do-engagement
         ask max-n-of subcount latest-tick-active [ my-comments ] [
           update-management-links-to-member
         ]
-        set my-comments my-comments + subcount
-      ]
+        set my-comments my-comments + subcount      ]
       ;; If capacity is NOT greater than the number in the subset, ask capacity of the subset
       [
         ;; the subject is "managers" in the "manage-community" routine, so I ask the members to update in-intimacy-links-from myself
@@ -216,6 +216,7 @@ to do-engagement
           update-management-links-to-member
           ]
         set my-comments my-comments + capacity
+        set times-constrained times-constrained + 1
       ]
     ]
   ]
@@ -380,7 +381,7 @@ SWITCH
 261
 onboard
 onboard
-1
+0
 1
 -1000
 
@@ -508,7 +509,7 @@ SWITCH
 302
 randomised-chattiness
 randomised-chattiness
-0
+1
 1
 -1000
 
@@ -544,22 +545,33 @@ Mgmt comms
 11
 
 PLOT
-365
-495
-565
-645
+1165
+15
+1365
+165
 Chattiness
 NIL
 NIL
 0.0
-10.0
+100.0
 0.0
 1.0
 true
 false
 "" ""
 PENS
-"default" 1.0 2 -16777216 true "" "histogram my-chattiness of [members]"
+"default" 1.0 1 -16777216 true "" "histogram [my-chattiness * 100] of members"
+
+MONITOR
+1165
+185
+1365
+230
+At capacity
+[times-constrained] of turtle 0
+0
+1
+11
 
 @#$#@#$#@
 ## WHAT IS IT?
@@ -1080,6 +1092,47 @@ NetLogo 5.3.1
     <enumeratedValueSet variable="global-chattiness">
       <value value="0.1"/>
       <value value="0.2"/>
+      <value value="0.4"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="engage">
+      <value value="true"/>
+    </enumeratedValueSet>
+  </experiment>
+  <experiment name="priority + capacity activity and inclusion" repetitions="4" runMetricsEveryStep="false">
+    <setup>setup</setup>
+    <go>go</go>
+    <metric>mgmt-effort</metric>
+    <metric>total-comments</metric>
+    <metric>dropouts</metric>
+    <metric>[times-constrained] of turtle 0</metric>
+    <enumeratedValueSet variable="priority">
+      <value value="&quot;newer&quot;"/>
+      <value value="&quot;more active&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="randomised-chattiness">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="capacity">
+      <value value="10"/>
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="founders">
+      <value value="2"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="intimacy-strength">
+      <value value="11"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="onboard">
+      <value value="false"/>
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="threshold">
+      <value value="4"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="num-members">
+      <value value="600"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="global-chattiness">
       <value value="0.4"/>
     </enumeratedValueSet>
     <enumeratedValueSet variable="engage">
