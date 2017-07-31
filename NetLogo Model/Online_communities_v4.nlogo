@@ -6,7 +6,7 @@ breed [ members member ]
 members-own [ extra-chattiness my-chattiness membership-strength join-date latest-interaction active? chatty? done?]
 
 breed [ managers manager ]
-managers-own [ times-constrained ]
+managers-own [ times-constrained current-comments]
 
 directed-link-breed [ intimacy-links intimacy-link ]
 intimacy-links-own [ strength ]
@@ -208,7 +208,9 @@ to do-engagement
         ask max-n-of subcount latest-tick-active [ my-comments ] [
           update-management-links-to-member
         ]
-        set my-comments my-comments + subcount      ]
+        set my-comments my-comments + subcount
+        set current-comments subcount
+        ]
       ;; If capacity is NOT greater than the number in the subset, ask capacity of the subset
       [
         ;; the subject is "managers" in the "manage-community" routine, so I ask the members to update in-intimacy-links-from myself
@@ -217,6 +219,7 @@ to do-engagement
           ]
         set my-comments my-comments + capacity
         set times-constrained times-constrained + 1
+        set current-comments capacity
       ]
     ]
   ]
@@ -229,6 +232,7 @@ to do-engagement
           update-management-links-to-member
           ]
         set my-comments my-comments + subcount
+        set current-comments subcount
       ]
       ;; If capacity is NOT greater than the number in the subset, ask capacity of the subset
       [
@@ -237,6 +241,8 @@ to do-engagement
           update-management-links-to-member
           ]
         set my-comments my-comments + capacity
+        set times-constrained times-constrained + 1
+        set current-comments capacity
       ]
     ]
   ]
@@ -279,6 +285,10 @@ end
 
 to-report mgmt-effort
   report [my-comments] of turtle 0
+end
+
+to-report effort-now
+  report [current-comments] of turtle 0
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
@@ -509,7 +519,7 @@ SWITCH
 302
 randomised-chattiness
 randomised-chattiness
-1
+0
 1
 -1000
 
@@ -572,6 +582,25 @@ At capacity
 0
 1
 11
+
+PLOT
+1170
+250
+1370
+400
+Mgmt activity
+NIL
+NIL
+0.0
+10.0
+0.0
+10.0
+true
+false
+"" ""
+PENS
+"default" 1.0 0 -16777216 true "" "if ticks > 2 [\n  plot effort-now\n  ]"
+"pen-1" 1.0 0 -2674135 true "" "plot capacity"
 
 @#$#@#$#@
 ## WHAT IS IT?
@@ -1111,6 +1140,49 @@ NetLogo 5.3.1
     </enumeratedValueSet>
     <enumeratedValueSet variable="randomised-chattiness">
       <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="capacity">
+      <value value="10"/>
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="founders">
+      <value value="2"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="intimacy-strength">
+      <value value="11"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="onboard">
+      <value value="false"/>
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="threshold">
+      <value value="4"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="num-members">
+      <value value="600"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="global-chattiness">
+      <value value="0.4"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="engage">
+      <value value="true"/>
+    </enumeratedValueSet>
+  </experiment>
+  <experiment name="priority + capacity + rand_chat activity and inclusion" repetitions="4" runMetricsEveryStep="false">
+    <setup>setup</setup>
+    <go>go</go>
+    <metric>mgmt-effort</metric>
+    <metric>total-comments</metric>
+    <metric>total-membership-strength</metric>
+    <metric>dropouts</metric>
+    <metric>[times-constrained] of turtle 0</metric>
+    <enumeratedValueSet variable="priority">
+      <value value="&quot;newer&quot;"/>
+      <value value="&quot;more active&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="randomised-chattiness">
+      <value value="false"/>
+      <value value="true"/>
     </enumeratedValueSet>
     <enumeratedValueSet variable="capacity">
       <value value="10"/>
