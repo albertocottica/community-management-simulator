@@ -52,7 +52,7 @@ def convert (runRow):
         listOfTurtleDicts.append(turtleRow)
     return listOfTurtleDicts
 
-dirPath = '/Users/albertocottica/github/local/community-management-simulator-2/Data/'
+dirPath = '/Users/albertocottica/github/local/community-management-simulator/Data/'
 converted = []
 with open (dirPath + 'Online_communities_v4 intimacy-strength vs. policies vs. priority vs. randomised-chattiness-table.csv', 'r') as csvFile:
     for i in range (6):
@@ -63,7 +63,7 @@ with open (dirPath + 'Online_communities_v4 intimacy-strength vs. policies vs. p
         for item in listOfDicts:
             converted.append(item)
         
-with open (dirPath + 'dataByTurtle_v4.csv', 'w') as outFile:
+with open (dirPath + 'dataByTurtle_v4_replica.csv', 'w') as outFile:
     fieldnames = ["[run number]","founders","global-chattiness", "randomised-chattiness","num-members","intimacy-strength","policy", "priority","total-membership-strength","dropouts","total-comments", "mgmt-effort","id", "ms","nc"]
     ## paste the column title row of the table.csv file coming out of NetLogo
     writer = csv.DictWriter (outFile, fieldnames = fieldnames)
