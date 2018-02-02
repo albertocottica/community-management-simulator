@@ -1,0 +1,3205 @@
+{smcl}
+{txt}{sf}{ul off}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}/Users/albertocottica/github/local/community-management-simulator/Data/t-tests-by-priority-with-Stata.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res} 6 Aug 2017, 16:35:49
+{txt}
+{com}. set more off
+{txt}
+{com}. foreach c in float(.1) float(.2) float(.4) {c -(}
+{txt}  2{com}.         foreach i in 1 5 11 {c -(}
+{txt}  3{com}.                 foreach rand in "true" "false" {c -(}
+{txt}  4{com}.                         foreach p in "engage" "both" {c -(}
+{txt}  5{com}.                                 foreach var in dropouts totalmembershipstrength totalcomments mgmteffort {c -(}
+{txt}  6{com}.                                         display as text "globalchattiness = " as result `c'
+{txt}  7{com}.                                         display as text "intimacystrength = " as result `i'
+{txt}  8{com}.                                         display as text "randomisedchattiness = " as result "`rand'"
+{txt}  9{com}.                                         display as text "priority = " as result "`p'"
+{txt} 10{com}.                                         display as text "Test for = " as result "`var'"
+{txt} 11{com}.                                         ttest `var' if globalchattiness == `c' & intimacystrength == `i' & randomisedchattines == "`rand'" ///
+>                                         & policy == "`p'", by(priority)
+{txt} 12{com}.                                         {c )-}
+{txt} 13{com}.                                 {c )-}
+{txt} 14{com}.                         {c )-}
+{txt} 15{com}.                 {c )-}
+{txt} 16{com}.         {c )-}
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}engage
+{txt}Test for = {res}dropouts
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 1.083333{col 34}   .22455{col 46} 1.100066{col 58} .6188163{col 70}  1.54785
+   {txt}newer {c |}{res}{col 12}     24{col 22}        0{col 34}        0{col 46}        0{col 58}        0{col 70}        0
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} .5416667{col 34} .1363088{col 46} .9443749{col 58} .2674488{col 70} .8158846
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22} 1.083333{col 34}   .22455{col 58} .6313376{col 70} 1.535329
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res}  4.8245
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}1.0000         {txt}Pr(|T| > |t|) = {res}0.0000          {txt}Pr(T > t) = {res}0.0000
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}engage
+{txt}Test for = {res}totalmembershipstrength
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22}  6084050{col 34} 9204.696{col 46} 45093.62{col 58}  6065009{col 70}  6103091
+   {txt}newer {c |}{res}{col 12}     24{col 22}  6098193{col 34} 7751.875{col 46} 37976.28{col 58}  6082157{col 70}  6114229
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22}  6091121{col 34}  6041.37{col 46} 41855.84{col 58}  6078968{col 70}  6103275
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}-14143.04{col 34} 12034.03{col 58} -38366.3{col 70} 10080.21
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res} -1.1753
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.1230         {txt}Pr(|T| > |t|) = {res}0.2459          {txt}Pr(T > t) = {res}0.8770
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}engage
+{txt}Test for = {res}totalcomments
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 73223.83{col 34} 113.9466{col 46} 558.2219{col 58} 72988.12{col 70} 73459.55
+   {txt}newer {c |}{res}{col 12}     24{col 22} 73357.71{col 34} 98.78069{col 46} 483.9246{col 58} 73153.36{col 70} 73562.05
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 73290.77{col 34} 75.23117{col 46} 521.2168{col 58} 73139.43{col 70} 73442.12
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22} -133.875{col 34} 150.8027{col 58} -437.425{col 70}  169.675
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res} -0.8877
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.1896         {txt}Pr(|T| > |t|) = {res}0.3793          {txt}Pr(T > t) = {res}0.8104
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}engage
+{txt}Test for = {res}mgmteffort
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 6629.125{col 34} 3.258385{col 46} 15.96276{col 58} 6622.385{col 70} 6635.865
+   {txt}newer {c |}{res}{col 12}     24{col 22} 6623.542{col 34} 2.621662{col 46} 12.84347{col 58} 6618.118{col 70} 6628.965
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 6626.333{col 34} 2.108395{col 46} 14.60739{col 58} 6622.092{col 70} 6630.575
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22} 5.583333{col 34} 4.182127{col 58}-2.834852{col 70} 14.00152
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res}  1.3350
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.9058         {txt}Pr(|T| > |t|) = {res}0.1884          {txt}Pr(T > t) = {res}0.0942
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}both
+{txt}Test for = {res}dropouts
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} .5416667{col 34} .1590184{col 46} .7790276{col 58} .2127121{col 70} .8706212
+   {txt}newer {c |}{res}{col 12}     24{col 22}        0{col 34}        0{col 46}        0{col 58}        0{col 70}        0
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} .2708333{col 34} .0880219{col 46} .6098337{col 58} .0937561{col 70} .4479106
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22} .5416667{col 34} .1590184{col 58} .2215793{col 70}  .861754
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res}  3.4063
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.9993         {txt}Pr(|T| > |t|) = {res}0.0014          {txt}Pr(T > t) = {res}0.0007
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}both
+{txt}Test for = {res}totalmembershipstrength
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22}  6146308{col 34} 6836.181{col 46} 33490.31{col 58}  6132166{col 70}  6160449
+   {txt}newer {c |}{res}{col 12}     24{col 22}  6178533{col 34} 11830.02{col 46} 57955.02{col 58}  6154061{col 70}  6203005
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22}  6162420{col 34} 7155.526{col 46} 49574.94{col 58}  6148025{col 70}  6176815
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}-32225.56{col 34} 13663.19{col 58}-59728.14{col 70}-4722.989
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res} -2.3586
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.0113         {txt}Pr(|T| > |t|) = {res}0.0227          {txt}Pr(T > t) = {res}0.9887
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}both
+{txt}Test for = {res}totalcomments
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 73239.58{col 34} 89.03885{col 46} 436.1995{col 58} 73055.39{col 70} 73423.77
+   {txt}newer {c |}{res}{col 12}     24{col 22} 73574.42{col 34} 145.1713{col 46} 711.1915{col 58} 73274.11{col 70} 73874.73
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22}    73407{col 34} 87.70825{col 46} 607.6606{col 58} 73230.55{col 70} 73583.45
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}-334.8333{col 34} 170.3016{col 58}-677.6327{col 70}  7.96602
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res} -1.9661
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.0277         {txt}Pr(|T| > |t|) = {res}0.0553          {txt}Pr(T > t) = {res}0.9723
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}both
+{txt}Test for = {res}mgmteffort
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 7322.667{col 34} 2.676837{col 46} 13.11377{col 58} 7317.129{col 70} 7328.204
+   {txt}newer {c |}{res}{col 12}     24{col 22} 7322.125{col 34} 3.438019{col 46} 16.84278{col 58} 7315.013{col 70} 7329.237
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 7322.396{col 34} 2.155674{col 46} 14.93495{col 58} 7318.059{col 70} 7326.732
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22} .5416667{col 34} 4.357228{col 58}-8.228977{col 70} 9.312311
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res}  0.1243
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.5492         {txt}Pr(|T| > |t|) = {res}0.9016          {txt}Pr(T > t) = {res}0.4508
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}engage
+{txt}Test for = {res}dropouts
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} .9166667{col 34}  .216332{col 46} 1.059806{col 58} .4691499{col 70} 1.364183
+   {txt}newer {c |}{res}{col 12}     24{col 22}        0{col 34}        0{col 46}        0{col 58}        0{col 70}        0
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} .4583333{col 34} .1261765{col 46} .8741764{col 58}  .204499{col 70} .7121677
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22} .9166667{col 34}  .216332{col 58}  .481213{col 70}  1.35212
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res}  4.2373
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.9999         {txt}Pr(|T| > |t|) = {res}0.0001          {txt}Pr(T > t) = {res}0.0001
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}engage
+{txt}Test for = {res}totalmembershipstrength
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22}  6089885{col 34} 6459.459{col 46} 31644.76{col 58}  6076523{col 70}  6103247
+   {txt}newer {c |}{res}{col 12}     24{col 22}  6097876{col 34} 4105.405{col 46} 20112.29{col 58}  6089384{col 70}  6106369
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22}  6093881{col 34} 3830.516{col 46}  26538.6{col 58}  6086175{col 70}  6101587
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}-7991.542{col 34} 7653.689{col 58}-23397.62{col 70} 7414.536
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res} -1.0441
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.1509         {txt}Pr(|T| > |t|) = {res}0.3019          {txt}Pr(T > t) = {res}0.8491
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}engage
+{txt}Test for = {res}totalcomments
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 73283.04{col 34} 72.56677{col 46} 355.5031{col 58} 73132.93{col 70} 73433.16
+   {txt}newer {c |}{res}{col 12}     24{col 22} 73352.58{col 34} 50.82201{col 46}  248.976{col 58} 73247.45{col 70} 73457.72
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 73317.81{col 34} 44.11551{col 46} 305.6412{col 58} 73229.06{col 70} 73406.56
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}-69.54167{col 34} 88.59353{col 58}-247.8712{col 70} 108.7879
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res} -0.7850
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.2183         {txt}Pr(|T| > |t|) = {res}0.4365          {txt}Pr(T > t) = {res}0.7817
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}engage
+{txt}Test for = {res}mgmteffort
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 6624.583{col 34} 2.618854{col 46} 12.82971{col 58} 6619.166{col 70} 6630.001
+   {txt}newer {c |}{res}{col 12}     24{col 22} 6627.708{col 34} 2.068115{col 46} 10.13165{col 58}  6623.43{col 70} 6631.987
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 6626.146{col 34} 1.666309{col 46} 11.54453{col 58} 6622.794{col 70} 6629.498
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}   -3.125{col 34} 3.336988{col 58}-9.842009{col 70} 3.592009
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res} -0.9365
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.1770         {txt}Pr(|T| > |t|) = {res}0.3539          {txt}Pr(T > t) = {res}0.8230
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}both
+{txt}Test for = {res}dropouts
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} .4583333{col 34} .1343148{col 46} .6580053{col 58} .1804821{col 70} .7361846
+   {txt}newer {c |}{res}{col 12}     24{col 22}        0{col 34}        0{col 46}        0{col 58}        0{col 70}        0
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} .2291667{col 34} .0743744{col 46} .5152807{col 58} .0795448{col 70} .3787886
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22} .4583333{col 34} .1343148{col 58} .1879717{col 70}  .728695
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res}  3.4124
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.9993         {txt}Pr(|T| > |t|) = {res}0.0014          {txt}Pr(T > t) = {res}0.0007
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}both
+{txt}Test for = {res}totalmembershipstrength
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22}  6158803{col 34} 6695.638{col 46} 32801.79{col 58}  6144952{col 70}  6172654
+   {txt}newer {c |}{res}{col 12}     24{col 22}  6159330{col 34} 5771.259{col 46} 28273.28{col 58}  6147392{col 70}  6171269
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22}  6159067{col 34}  4372.71{col 46} 30295.02{col 58}  6150270{col 70}  6167864
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22} -526.875{col 34} 8839.626{col 58}-18320.12{col 70} 17266.37
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res} -0.0596
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.4764         {txt}Pr(|T| > |t|) = {res}0.9527          {txt}Pr(T > t) = {res}0.5236
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}both
+{txt}Test for = {res}totalcomments
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 73339.29{col 34} 82.25003{col 46} 402.9412{col 58} 73169.14{col 70} 73509.44
+   {txt}newer {c |}{res}{col 12}     24{col 22} 73333.42{col 34}  76.0488{col 46} 372.5615{col 58}  73176.1{col 70} 73490.74
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 73336.35{col 34} 55.41262{col 46} 383.9099{col 58} 73224.88{col 70} 73447.83
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}    5.875{col 34}   112.02{col 58}-219.6096{col 70} 231.3596
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res}  0.0524
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.5208         {txt}Pr(|T| > |t|) = {res}0.9584          {txt}Pr(T > t) = {res}0.4792
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}both
+{txt}Test for = {res}mgmteffort
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 7322.542{col 34} 2.658033{col 46} 13.02165{col 58} 7317.043{col 70}  7328.04
+   {txt}newer {c |}{res}{col 12}     24{col 22} 7326.125{col 34} 3.361285{col 46} 16.46686{col 58} 7319.172{col 70} 7333.078
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 7324.333{col 34} 2.135759{col 46} 14.79697{col 58} 7320.037{col 70}  7328.63
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}-3.583333{col 34} 4.285251{col 58} -12.2091{col 70} 5.042429
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res} -0.8362
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.2037         {txt}Pr(|T| > |t|) = {res}0.4074          {txt}Pr(T > t) = {res}0.7963
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}engage
+{txt}Test for = {res}dropouts
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 3.583333{col 34} .4378665{col 46} 2.145099{col 58} 2.677538{col 70} 4.489129
+   {txt}newer {c |}{res}{col 12}     24{col 22} .0416667{col 34} .0416667{col 46} .2041241{col 58}-.0445274{col 70} .1278607
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22}   1.8125{col 34} .3377232{col 46} 2.339815{col 58} 1.133089{col 70} 2.491911
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22} 3.541667{col 34} .4398445{col 58} 2.656306{col 70} 4.427028
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res}  8.0521
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}1.0000         {txt}Pr(|T| > |t|) = {res}0.0000          {txt}Pr(T > t) = {res}0.0000
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}engage
+{txt}Test for = {res}totalmembershipstrength
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22}  6043424{col 34} 8670.296{col 46}  42475.6{col 58}  6025489{col 70}  6061360
+   {txt}newer {c |}{res}{col 12}     24{col 22}  6096161{col 34} 9594.978{col 46}  47005.6{col 58}  6076312{col 70}  6116009
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22}  6069793{col 34}  7464.11{col 46} 51712.87{col 58}  6054777{col 70}  6084808
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}-52736.15{col 34} 12932.04{col 58}-78766.99{col 70} -26705.3
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res} -4.0779
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.0001         {txt}Pr(|T| > |t|) = {res}0.0002          {txt}Pr(T > t) = {res}0.9999
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}engage
+{txt}Test for = {res}totalcomments
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 72882.17{col 34} 112.7922{col 46} 552.5668{col 58} 72648.84{col 70}  73115.5
+   {txt}newer {c |}{res}{col 12}     24{col 22} 73291.54{col 34} 116.4321{col 46} 570.3984{col 58} 73050.68{col 70}  73532.4
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 73086.85{col 34} 85.56445{col 46} 592.8079{col 58} 72914.72{col 70} 73258.99
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22} -409.375{col 34} 162.1065{col 58}-735.6785{col 70}-83.07154
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res} -2.5253
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.0075         {txt}Pr(|T| > |t|) = {res}0.0151          {txt}Pr(T > t) = {res}0.9925
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}engage
+{txt}Test for = {res}mgmteffort
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22}  6634.75{col 34} 2.906296{col 46} 14.23789{col 58} 6628.738{col 70} 6640.762
+   {txt}newer {c |}{res}{col 12}     24{col 22} 6638.208{col 34} 3.286434{col 46} 16.10017{col 58}  6631.41{col 70} 6645.007
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 6636.479{col 34} 2.184729{col 46} 15.13625{col 58} 6632.084{col 70} 6640.874
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}-3.458333{col 34} 4.387164{col 58}-12.28924{col 70}  5.37257
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res} -0.7883
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.2173         {txt}Pr(|T| > |t|) = {res}0.4346          {txt}Pr(T > t) = {res}0.7827
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}both
+{txt}Test for = {res}dropouts
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22}      1.5{col 34} .2948839{col 46}  1.44463{col 58} .8899862{col 70} 2.110014
+   {txt}newer {c |}{res}{col 12}     24{col 22}        0{col 34}        0{col 46}        0{col 58}        0{col 70}        0
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22}      .75{col 34} .1823312{col 46} 1.263228{col 58} .3831969{col 70} 1.116803
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}      1.5{col 34} .2948839{col 58} .9064295{col 70} 2.093571
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res}  5.0867
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}1.0000         {txt}Pr(|T| > |t|) = {res}0.0000          {txt}Pr(T > t) = {res}0.0000
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}both
+{txt}Test for = {res}totalmembershipstrength
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22}  6140294{col 34} 9430.693{col 46} 46200.77{col 58}  6120785{col 70}  6159803
+   {txt}newer {c |}{res}{col 12}     24{col 22}  6160012{col 34} 10675.88{col 46} 52300.92{col 58}  6137927{col 70}  6182096
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22}  6150153{col 34} 7191.432{col 46}  49823.7{col 58}  6135686{col 70}  6164620
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}-19717.21{col 34} 14244.73{col 58}-48390.37{col 70}  8955.95
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res} -1.3842
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.0865         {txt}Pr(|T| > |t|) = {res}0.1730          {txt}Pr(T > t) = {res}0.9135
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}both
+{txt}Test for = {res}totalcomments
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 73192.88{col 34} 111.0279{col 46} 543.9235{col 58}  72963.2{col 70} 73422.55
+   {txt}newer {c |}{res}{col 12}     24{col 22} 73321.67{col 34} 139.1964{col 46} 681.9204{col 58} 73033.72{col 70} 73609.62
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 73257.27{col 34} 88.57375{col 46} 613.6569{col 58} 73079.08{col 70} 73435.46
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}-128.7917{col 34} 178.0529{col 58}-487.1936{col 70} 229.6103
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res} -0.7233
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.2366         {txt}Pr(|T| > |t|) = {res}0.4731          {txt}Pr(T > t) = {res}0.7634
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}both
+{txt}Test for = {res}mgmteffort
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 7331.917{col 34} 2.274557{col 46} 11.14301{col 58} 7327.211{col 70} 7336.622
+   {txt}newer {c |}{res}{col 12}     24{col 22} 7328.417{col 34} 3.436756{col 46}  16.8366{col 58} 7321.307{col 70} 7335.526
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 7330.167{col 34} 2.054517{col 46} 14.23411{col 58} 7326.034{col 70}   7334.3
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}      3.5{col 34} 4.121274{col 58}-4.795695{col 70}  11.7957
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res}  0.8493
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.7999         {txt}Pr(|T| > |t|) = {res}0.4001          {txt}Pr(T > t) = {res}0.2001
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}engage
+{txt}Test for = {res}dropouts
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 3.666667{col 34} .3931785{col 46} 1.926174{col 58} 2.853315{col 70} 4.480018
+   {txt}newer {c |}{res}{col 12}     24{col 22}        0{col 34}        0{col 46}        0{col 58}        0{col 70}        0
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 1.833333{col 34} .3306631{col 46} 2.290901{col 58} 1.168125{col 70} 2.498542
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22} 3.666667{col 34} .3931785{col 58} 2.875239{col 70} 4.458094
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res}  9.3257
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}1.0000         {txt}Pr(|T| > |t|) = {res}0.0000          {txt}Pr(T > t) = {res}0.0000
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}engage
+{txt}Test for = {res}totalmembershipstrength
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22}  6049826{col 34} 8585.119{col 46} 42058.32{col 58}  6032066{col 70}  6067585
+   {txt}newer {c |}{res}{col 12}     24{col 22}  6111903{col 34} 6167.854{col 46} 30216.19{col 58}  6099144{col 70}  6124663
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22}  6080865{col 34} 6916.674{col 46} 47920.13{col 58}  6066950{col 70}  6094779
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}-62077.73{col 34} 10571.03{col 58}-83356.11{col 70}-40799.35
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res} -5.8724
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.0000         {txt}Pr(|T| > |t|) = {res}0.0000          {txt}Pr(T > t) = {res}1.0000
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}engage
+{txt}Test for = {res}totalcomments
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 72966.96{col 34}  80.7452{col 46} 395.5691{col 58} 72799.92{col 70} 73133.99
+   {txt}newer {c |}{res}{col 12}     24{col 22} 73439.92{col 34} 76.27531{col 46} 373.6712{col 58} 73282.13{col 70}  73597.7
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 73203.44{col 34} 64.87403{col 46} 449.4605{col 58} 73072.93{col 70} 73333.95
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}-472.9583{col 34} 111.0753{col 58}-696.5412{col 70}-249.3754
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res} -4.2580
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.0001         {txt}Pr(|T| > |t|) = {res}0.0001          {txt}Pr(T > t) = {res}0.9999
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}engage
+{txt}Test for = {res}mgmteffort
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 6640.292{col 34} 2.410333{col 46} 11.80817{col 58} 6635.306{col 70} 6645.278
+   {txt}newer {c |}{res}{col 12}     24{col 22} 6640.208{col 34}  2.75048{col 46} 13.47455{col 58} 6634.519{col 70} 6645.898
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22}  6640.25{col 34} 1.809035{col 46} 12.53336{col 58} 6636.611{col 70} 6643.889
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22} .0833333{col 34} 3.657164{col 58}-7.278156{col 70} 7.444823
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res}  0.0228
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.5090         {txt}Pr(|T| > |t|) = {res}0.9819          {txt}Pr(T > t) = {res}0.4910
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}both
+{txt}Test for = {res}dropouts
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 1.541667{col 34} .1901484{col 46} .9315329{col 58} 1.148315{col 70} 1.935019
+   {txt}newer {c |}{res}{col 12}     24{col 22}        0{col 34}        0{col 46}        0{col 58}        0{col 70}        0
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} .7708333{col 34} .1465912{col 46} 1.015614{col 58} .4759298{col 70} 1.065737
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22} 1.541667{col 34} .1901484{col 58} 1.158918{col 70} 1.924415
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res}  8.1077
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}1.0000         {txt}Pr(|T| > |t|) = {res}0.0000          {txt}Pr(T > t) = {res}0.0000
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}both
+{txt}Test for = {res}totalmembershipstrength
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22}  6126684{col 34} 4943.063{col 46} 24215.96{col 58}  6116458{col 70}  6136909
+   {txt}newer {c |}{res}{col 12}     24{col 22}  6163437{col 34} 5012.641{col 46} 24556.82{col 58}  6153068{col 70}  6173807
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22}  6145060{col 34} 4394.524{col 46} 30446.15{col 58}  6136220{col 70}  6153901
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}-36753.85{col 34} 7039.917{col 58}-50924.47{col 70}-22583.24
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res} -5.2208
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.0000         {txt}Pr(|T| > |t|) = {res}0.0000          {txt}Pr(T > t) = {res}1.0000
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}both
+{txt}Test for = {res}totalcomments
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 73033.42{col 34} 58.99389{col 46} 289.0098{col 58} 72911.38{col 70} 73155.45
+   {txt}newer {c |}{res}{col 12}     24{col 22} 73369.54{col 34} 65.72825{col 46} 322.0013{col 58} 73233.57{col 70} 73505.51
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 73201.48{col 34} 50.09577{col 46} 347.0737{col 58}  73100.7{col 70} 73302.26
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22} -336.125{col 34} 88.32033{col 58}-513.9046{col 70}-158.3454
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res} -3.8057
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.0002         {txt}Pr(|T| > |t|) = {res}0.0004          {txt}Pr(T > t) = {res}0.9998
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}both
+{txt}Test for = {res}mgmteffort
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 7331.583{col 34} 2.882931{col 46} 14.12342{col 58}  7325.62{col 70} 7337.547
+   {txt}newer {c |}{res}{col 12}     24{col 22}     7329{col 34} 2.504344{col 46} 12.26873{col 58} 7323.819{col 70} 7334.181
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 7330.292{col 34} 1.898338{col 46} 13.15207{col 58} 7326.473{col 70} 7334.111
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22} 2.583333{col 34} 3.818774{col 58}-5.103459{col 70} 10.27013
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res}  0.6765
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.7489         {txt}Pr(|T| > |t|) = {res}0.5021          {txt}Pr(T > t) = {res}0.2511
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}engage
+{txt}Test for = {res}dropouts
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 27.29167{col 34} 1.542254{col 46} 7.555471{col 58} 24.10127{col 70} 30.48206
+   {txt}newer {c |}{res}{col 12}     24{col 22} .1666667{col 34} .0982946{col 46} .4815434{col 58}-.0366713{col 70} .3700046
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 13.72917{col 34} 2.120848{col 46} 14.69367{col 58} 9.462571{col 70} 17.99576
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}   27.125{col 34} 1.545383{col 58}  24.0143{col 70}  30.2357
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res} 17.5523
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}1.0000         {txt}Pr(|T| > |t|) = {res}0.0000          {txt}Pr(T > t) = {res}0.0000
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}engage
+{txt}Test for = {res}totalmembershipstrength
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22}  5757599{col 34} 24844.96{col 46} 121714.9{col 58}  5706203{col 70}  5808995
+   {txt}newer {c |}{res}{col 12}     24{col 22}  6104640{col 34} 8643.257{col 46} 42343.14{col 58}  6086760{col 70}  6122520
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22}  5931119{col 34} 28459.42{col 46} 197172.7{col 58}  5873866{col 70}  5988372
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}-347041.1{col 34} 26305.47{col 58}-399991.3{col 70}-294090.9
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res}-13.1927
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.0000         {txt}Pr(|T| > |t|) = {res}0.0000          {txt}Pr(T > t) = {res}1.0000
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}engage
+{txt}Test for = {res}totalcomments
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 70609.63{col 34} 226.3454{col 46} 1108.862{col 58} 70141.39{col 70} 71077.86
+   {txt}newer {c |}{res}{col 12}     24{col 22} 73336.08{col 34} 105.8088{col 46} 518.3549{col 58}  73117.2{col 70} 73554.97
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 71972.85{col 34} 234.1264{col 46} 1622.075{col 58} 71501.85{col 70} 72443.86
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}-2726.458{col 34} 249.8554{col 58}-3229.391{col 70}-2223.525
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res}-10.9121
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.0000         {txt}Pr(|T| > |t|) = {res}0.0000          {txt}Pr(T > t) = {res}1.0000
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}engage
+{txt}Test for = {res}mgmteffort
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 6646.667{col 34} 3.218868{col 46} 15.76917{col 58} 6640.008{col 70} 6653.325
+   {txt}newer {c |}{res}{col 12}     24{col 22} 6646.083{col 34} 2.563623{col 46} 12.55914{col 58}  6640.78{col 70} 6651.387
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 6646.375{col 34} 2.035941{col 46} 14.10542{col 58} 6642.279{col 70} 6650.471
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22} .5833333{col 34} 4.115006{col 58}-7.699744{col 70}  8.86641
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res}  0.1418
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.5561         {txt}Pr(|T| > |t|) = {res}0.8879          {txt}Pr(T > t) = {res}0.4439
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}both
+{txt}Test for = {res}dropouts
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22}   12.375{col 34} .7704048{col 46} 3.774197{col 58}  10.7813{col 70}  13.9687
+   {txt}newer {c |}{res}{col 12}     24{col 22} .0416667{col 34} .0416667{col 46} .2041241{col 58}-.0445274{col 70} .1278607
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 6.208333{col 34} .9771132{col 46} 6.769639{col 58} 4.242635{col 70} 8.174032
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22} 12.33333{col 34} .7715307{col 58} 10.78032{col 70} 13.88634
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res} 15.9855
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}1.0000         {txt}Pr(|T| > |t|) = {res}0.0000          {txt}Pr(T > t) = {res}0.0000
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}both
+{txt}Test for = {res}totalmembershipstrength
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22}  6023320{col 34} 14221.67{col 46} 69671.69{col 58}  5993900{col 70}  6052739
+   {txt}newer {c |}{res}{col 12}     24{col 22}  6163589{col 34} 11286.93{col 46} 55294.43{col 58}  6140241{col 70}  6186938
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22}  6093454{col 34} 13613.11{col 46} 94314.38{col 58}  6066068{col 70}  6120840
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}-140269.8{col 34} 18156.29{col 58}-176816.5{col 70}-103723.1
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res} -7.7257
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.0000         {txt}Pr(|T| > |t|) = {res}0.0000          {txt}Pr(T > t) = {res}1.0000
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}both
+{txt}Test for = {res}totalcomments
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 72286.33{col 34} 151.2373{col 46} 740.9086{col 58} 71973.48{col 70} 72599.19
+   {txt}newer {c |}{res}{col 12}     24{col 22} 73351.46{col 34} 130.2062{col 46} 637.8776{col 58} 73082.11{col 70} 73620.81
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22}  72818.9{col 34} 125.6156{col 46} 870.2905{col 58} 72566.19{col 70}  73071.6
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}-1065.125{col 34} 199.5655{col 58} -1466.83{col 70}-663.4205
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res} -5.3372
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.0000         {txt}Pr(|T| > |t|) = {res}0.0000          {txt}Pr(T > t) = {res}1.0000
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}both
+{txt}Test for = {res}mgmteffort
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 7339.042{col 34} 3.036898{col 46}  14.8777{col 58} 7332.759{col 70} 7345.324
+   {txt}newer {c |}{res}{col 12}     24{col 22}  7337.75{col 34} 2.898807{col 46} 14.20119{col 58} 7331.753{col 70} 7343.747
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 7338.396{col 34}  2.07884{col 46} 14.40263{col 58} 7334.214{col 70} 7342.578
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22} 1.291667{col 34} 4.198313{col 58}-7.159099{col 70} 9.742432
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res}  0.3077
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.6201         {txt}Pr(|T| > |t|) = {res}0.7597          {txt}Pr(T > t) = {res}0.3799
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}engage
+{txt}Test for = {res}dropouts
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 26.58333{col 34} 1.503518{col 46} 7.365706{col 58} 23.47307{col 70}  29.6936
+   {txt}newer {c |}{res}{col 12}     24{col 22}        0{col 34}        0{col 46}        0{col 58}        0{col 70}        0
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 13.29167{col 34}  2.07654{col 46} 14.38669{col 58} 9.114206{col 70} 17.46913
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22} 26.58333{col 34} 1.503518{col 58} 23.55691{col 70} 29.60976
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res} 17.6808
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}1.0000         {txt}Pr(|T| > |t|) = {res}0.0000          {txt}Pr(T > t) = {res}0.0000
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}engage
+{txt}Test for = {res}totalmembershipstrength
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22}  5790531{col 34} 20803.91{col 46} 101917.9{col 58}  5747495{col 70}  5833567
+   {txt}newer {c |}{res}{col 12}     24{col 22}  6119759{col 34} 4521.712{col 46} 22151.77{col 58}  6110405{col 70}  6129113
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22}  5955145{col 34} 26219.25{col 46} 181652.3{col 58}  5902399{col 70}  6007891
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}-329227.9{col 34} 21289.63{col 58}-372081.7{col 70}-286374.1
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res}-15.4642
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.0000         {txt}Pr(|T| > |t|) = {res}0.0000          {txt}Pr(T > t) = {res}1.0000
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}engage
+{txt}Test for = {res}totalcomments
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 70900.71{col 34} 165.7562{col 46} 812.0362{col 58} 70557.82{col 70}  71243.6
+   {txt}newer {c |}{res}{col 12}     24{col 22} 73546.33{col 34} 58.69417{col 46} 287.5416{col 58} 73424.92{col 70} 73667.75
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 72223.52{col 34} 211.6508{col 46}  1466.36{col 58} 71797.73{col 70} 72649.31
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}-2645.625{col 34} 175.8412{col 58}-2999.575{col 70}-2291.675
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res}-15.0455
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.0000         {txt}Pr(|T| > |t|) = {res}0.0000          {txt}Pr(T > t) = {res}1.0000
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}engage
+{txt}Test for = {res}mgmteffort
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 6644.833{col 34} 2.542869{col 46} 12.45746{col 58} 6639.573{col 70} 6650.094
+   {txt}newer {c |}{res}{col 12}     24{col 22} 6647.833{col 34} 2.950477{col 46} 14.45433{col 58}  6641.73{col 70} 6653.937
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 6646.333{col 34} 1.939084{col 46} 13.43437{col 58} 6642.432{col 70} 6650.234
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}       -3{col 34} 3.895061{col 58}-10.84035{col 70}  4.84035
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res} -0.7702
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.2226         {txt}Pr(|T| > |t|) = {res}0.4451          {txt}Pr(T > t) = {res}0.7774
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}both
+{txt}Test for = {res}dropouts
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 10.33333{col 34} .6854245{col 46} 3.357881{col 58} 8.915425{col 70} 11.75124
+   {txt}newer {c |}{res}{col 12}     24{col 22}        0{col 34}        0{col 46}        0{col 58}        0{col 70}        0
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 5.166667{col 34} .8263895{col 46} 5.725394{col 58} 3.504185{col 70} 6.829148
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22} 10.33333{col 34} .6854245{col 58} 8.953645{col 70} 11.71302
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res} 15.0758
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}1.0000         {txt}Pr(|T| > |t|) = {res}0.0000          {txt}Pr(T > t) = {res}0.0000
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}both
+{txt}Test for = {res}totalmembershipstrength
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22}  6048976{col 34} 8945.114{col 46} 43821.93{col 58}  6030471{col 70}  6067480
+   {txt}newer {c |}{res}{col 12}     24{col 22}  6163691{col 34} 6132.471{col 46} 30042.85{col 58}  6151005{col 70}  6176377
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22}  6106333{col 34} 9938.688{col 46} 68857.25{col 58}  6086339{col 70}  6126327
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}-114715.1{col 34} 10845.38{col 58}-136545.7{col 70}-92884.47
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res}-10.5773
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.0000         {txt}Pr(|T| > |t|) = {res}0.0000          {txt}Pr(T > t) = {res}1.0000
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}both
+{txt}Test for = {res}totalcomments
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 72486.38{col 34} 85.54253{col 46} 419.0711{col 58} 72309.42{col 70} 72663.33
+   {txt}newer {c |}{res}{col 12}     24{col 22} 73373.13{col 34} 70.71514{col 46}  346.432{col 58} 73226.84{col 70} 73519.41
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 72929.75{col 34} 84.83278{col 46} 587.7387{col 58} 72759.09{col 70} 73100.41
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}  -886.75{col 34} 110.9872{col 58}-1110.156{col 70}-663.3444
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res} -7.9897
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.0000         {txt}Pr(|T| > |t|) = {res}0.0000          {txt}Pr(T > t) = {res}1.0000
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}both
+{txt}Test for = {res}mgmteffort
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22}  7346.25{col 34} 2.220825{col 46} 10.87978{col 58} 7341.656{col 70} 7350.844
+   {txt}newer {c |}{res}{col 12}     24{col 22} 7343.542{col 34} 3.072776{col 46} 15.05347{col 58} 7337.185{col 70} 7349.898
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 7344.896{col 34} 1.885753{col 46} 13.06488{col 58} 7341.102{col 70} 7348.689
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22} 2.708333{col 34} 3.791308{col 58}-4.923174{col 70} 10.33984
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res}  0.7144
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.7607         {txt}Pr(|T| > |t|) = {res}0.4786          {txt}Pr(T > t) = {res}0.2393
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}engage
+{txt}Test for = {res}dropouts
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} .0416667{col 34} .0416667{col 46} .2041241{col 58}-.0445274{col 70} .1278607
+   {txt}newer {c |}{res}{col 12}     24{col 22}        0{col 34}        0{col 46}        0{col 58}        0{col 70}        0
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} .0208333{col 34} .0208333{col 46} .1443376{col 58}-.0210779{col 70} .0627446
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22} .0416667{col 34} .0416667{col 58} -.042204{col 70} .1255373
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res}  1.0000
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.8387         {txt}Pr(|T| > |t|) = {res}0.3225          {txt}Pr(T > t) = {res}0.1613
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}engage
+{txt}Test for = {res}totalmembershipstrength
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22}  7963120{col 34} 16494.66{col 46} 80807.02{col 58}  7928998{col 70}  7997242
+   {txt}newer {c |}{res}{col 12}     24{col 22}  7965195{col 34} 18767.45{col 46} 91941.36{col 58}  7926371{col 70}  8004018
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22}  7964157{col 34} 12360.22{col 46}  85634.1{col 58}  7939292{col 70}  7989023
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}-2074.896{col 34} 24985.82{col 58}-52368.74{col 70} 48218.95
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res} -0.0830
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.4671         {txt}Pr(|T| > |t|) = {res}0.9342          {txt}Pr(T > t) = {res}0.5329
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}engage
+{txt}Test for = {res}totalcomments
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 97922.04{col 34} 201.1274{col 46} 985.3189{col 58} 97505.98{col 70} 98338.11
+   {txt}newer {c |}{res}{col 12}     24{col 22} 97929.33{col 34} 221.6224{col 46} 1085.724{col 58} 97470.87{col 70} 98387.79
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 97925.69{col 34} 148.0406{col 46} 1025.656{col 58} 97627.87{col 70} 98223.51
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}-7.291667{col 34} 299.2803{col 58}-609.7117{col 70} 595.1284
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res} -0.0244
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.4903         {txt}Pr(|T| > |t|) = {res}0.9807          {txt}Pr(T > t) = {res}0.5097
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}engage
+{txt}Test for = {res}mgmteffort
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 6689.208{col 34} 2.810423{col 46}  13.7682{col 58} 6683.395{col 70} 6695.022
+   {txt}newer {c |}{res}{col 12}     24{col 22} 6690.875{col 34} 3.207957{col 46} 15.71571{col 58} 6684.239{col 70} 6697.511
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 6690.042{col 34} 2.113147{col 46} 14.64031{col 58} 6685.791{col 70} 6694.293
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}-1.666667{col 34} 4.264911{col 58}-10.25149{col 70} 6.918153
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res} -0.3908
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.3489         {txt}Pr(|T| > |t|) = {res}0.6978          {txt}Pr(T > t) = {res}0.6511
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}both
+{txt}Test for = {res}dropouts
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22}        0{col 34}        0{col 46}        0{col 58}        0{col 70}        0
+   {txt}newer {c |}{res}{col 12}     24{col 22}        0{col 34}        0{col 46}        0{col 58}        0{col 70}        0
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22}        0{col 34}        0{col 46}        0{col 58}        0{col 70}        0
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}        0{col 34}        0{col 58}        0{col 70}        0
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res}       .
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}     .         {txt}Pr(|T| > |t|) = {res}     .          {txt}Pr(T > t) = {res}     .
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}both
+{txt}Test for = {res}totalmembershipstrength
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22}  8019973{col 34} 18114.24{col 46} 88741.29{col 58}  7982501{col 70}  8057445
+   {txt}newer {c |}{res}{col 12}     24{col 22}  8049922{col 34} 16072.09{col 46} 78736.86{col 58}  8016674{col 70}  8083169
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22}  8034947{col 34} 12176.24{col 46} 84359.49{col 58}  8010452{col 70}  8059443
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}-29948.42{col 34} 24216.48{col 58}-78693.66{col 70} 18796.83
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res} -1.2367
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.1112         {txt}Pr(|T| > |t|) = {res}0.2225          {txt}Pr(T > t) = {res}0.8888
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}both
+{txt}Test for = {res}totalcomments
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22}    97831{col 34} 231.4284{col 46} 1133.763{col 58} 97352.25{col 70} 98309.75
+   {txt}newer {c |}{res}{col 12}     24{col 22} 98219.38{col 34} 193.9487{col 46} 950.1509{col 58} 97818.16{col 70} 98620.59
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 98025.19{col 34} 152.0235{col 46}  1053.25{col 58} 97719.36{col 70} 98331.02
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22} -388.375{col 34} 301.9524{col 58}-996.1736{col 70} 219.4236
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res} -1.2862
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.1024         {txt}Pr(|T| > |t|) = {res}0.2048          {txt}Pr(T > t) = {res}0.8976
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}both
+{txt}Test for = {res}mgmteffort
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 7389.375{col 34} 2.751688{col 46} 13.48046{col 58} 7383.683{col 70} 7395.067
+   {txt}newer {c |}{res}{col 12}     24{col 22} 7392.042{col 34} 2.506137{col 46} 12.27751{col 58} 7386.857{col 70} 7397.226
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 7390.708{col 34} 1.851288{col 46}  12.8261{col 58} 7386.984{col 70} 7394.433
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}-2.666667{col 34} 3.721895{col 58}-10.15845{col 70}  4.82512
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res} -0.7165
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.2387         {txt}Pr(|T| > |t|) = {res}0.4773          {txt}Pr(T > t) = {res}0.7613
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}engage
+{txt}Test for = {res}dropouts
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22}        0{col 34}        0{col 46}        0{col 58}        0{col 70}        0
+   {txt}newer {c |}{res}{col 12}     24{col 22}        0{col 34}        0{col 46}        0{col 58}        0{col 70}        0
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22}        0{col 34}        0{col 46}        0{col 58}        0{col 70}        0
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}        0{col 34}        0{col 58}        0{col 70}        0
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res}       .
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}     .         {txt}Pr(|T| > |t|) = {res}     .          {txt}Pr(T > t) = {res}     .
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}engage
+{txt}Test for = {res}totalmembershipstrength
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22}  7961624{col 34} 5486.423{col 46} 26877.88{col 58}  7950274{col 70}  7972973
+   {txt}newer {c |}{res}{col 12}     24{col 22}  7959150{col 34} 6020.481{col 46} 29494.21{col 58}  7946695{col 70}  7971604
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22}  7960387{col 34} 4033.163{col 46} 27942.58{col 58}  7952273{col 70}  7968500
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22} 2474.063{col 34} 8145.369{col 58}-13921.71{col 70} 18869.84
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res}  0.3037
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.6187         {txt}Pr(|T| > |t|) = {res}0.7627          {txt}Pr(T > t) = {res}0.3813
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}engage
+{txt}Test for = {res}totalcomments
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22}    97892{col 34} 63.35648{col 46} 310.3821{col 58} 97760.94{col 70} 98023.06
+   {txt}newer {c |}{res}{col 12}     24{col 22} 97839.67{col 34} 79.67185{col 46} 390.3108{col 58} 97674.85{col 70} 98004.48
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 97865.83{col 34} 50.49618{col 46} 349.8478{col 58} 97764.25{col 70} 97967.42
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22} 52.33333{col 34} 101.7922{col 58}-152.5637{col 70} 257.2304
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res}  0.5141
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.6952         {txt}Pr(|T| > |t|) = {res}0.6096          {txt}Pr(T > t) = {res}0.3048
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}engage
+{txt}Test for = {res}mgmteffort
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 6694.375{col 34}  1.96879{col 46}  9.64506{col 58} 6690.302{col 70} 6698.448
+   {txt}newer {c |}{res}{col 12}     24{col 22} 6694.958{col 34}  2.73297{col 46} 13.38877{col 58} 6689.305{col 70} 6700.612
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 6694.667{col 34} 1.666667{col 46} 11.54701{col 58} 6691.314{col 70}  6698.02
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}-.5833333{col 34} 3.368273{col 58}-7.363314{col 70} 6.196648
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res} -0.1732
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.4316         {txt}Pr(|T| > |t|) = {res}0.8633          {txt}Pr(T > t) = {res}0.5684
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}both
+{txt}Test for = {res}dropouts
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22}        0{col 34}        0{col 46}        0{col 58}        0{col 70}        0
+   {txt}newer {c |}{res}{col 12}     24{col 22}        0{col 34}        0{col 46}        0{col 58}        0{col 70}        0
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22}        0{col 34}        0{col 46}        0{col 58}        0{col 70}        0
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}        0{col 34}        0{col 58}        0{col 70}        0
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res}       .
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}     .         {txt}Pr(|T| > |t|) = {res}     .          {txt}Pr(T > t) = {res}     .
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}both
+{txt}Test for = {res}totalmembershipstrength
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22}  8020753{col 34} 6852.684{col 46} 33571.16{col 58}  8006577{col 70}  8034929
+   {txt}newer {c |}{res}{col 12}     24{col 22}  8026395{col 34} 6942.215{col 46} 34009.77{col 58}  8012034{col 70}  8040756
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22}  8023574{col 34} 4842.687{col 46} 33551.12{col 58}  8013832{col 70}  8033316
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}-5642.438{col 34} 9754.672{col 58}-25277.57{col 70}  13992.7
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res} -0.5784
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.2829         {txt}Pr(|T| > |t|) = {res}0.5658          {txt}Pr(T > t) = {res}0.7171
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}both
+{txt}Test for = {res}totalcomments
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22}    97859{col 34} 81.61453{col 46} 399.8279{col 58} 97690.17{col 70} 98027.83
+   {txt}newer {c |}{res}{col 12}     24{col 22} 97950.58{col 34} 88.11895{col 46} 431.6929{col 58}  97768.3{col 70} 98132.87
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 97904.79{col 34} 59.78588{col 46} 414.2087{col 58} 97784.52{col 70} 98025.07
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}-91.58333{col 34} 120.1078{col 58}-333.3478{col 70} 150.1811
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res} -0.7625
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.2248         {txt}Pr(|T| > |t|) = {res}0.4496          {txt}Pr(T > t) = {res}0.7752
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}both
+{txt}Test for = {res}mgmteffort
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 7392.792{col 34} 2.511552{col 46} 12.30404{col 58} 7387.596{col 70} 7397.987
+   {txt}newer {c |}{res}{col 12}     24{col 22}  7388.25{col 34} 2.240317{col 46} 10.97527{col 58} 7383.616{col 70} 7392.884
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 7390.521{col 34} 1.697409{col 46} 11.75999{col 58} 7387.106{col 70} 7393.936
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22} 4.541667{col 34} 3.365549{col 58}-2.232831{col 70} 11.31616
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res}  1.3495
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.9081         {txt}Pr(|T| > |t|) = {res}0.1838          {txt}Pr(T > t) = {res}0.0919
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}engage
+{txt}Test for = {res}dropouts
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22}        1{col 34} .1805788{col 46} .8846517{col 58} .6264443{col 70} 1.373556
+   {txt}newer {c |}{res}{col 12}     24{col 22}        0{col 34}        0{col 46}        0{col 58}        0{col 70}        0
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22}       .5{col 34} .1153164{col 46} .7989355{col 58} .2680133{col 70} .7319867
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}        1{col 34} .1805788{col 58} .6365138{col 70} 1.363486
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res}  5.5377
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}1.0000         {txt}Pr(|T| > |t|) = {res}0.0000          {txt}Pr(T > t) = {res}0.0000
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}engage
+{txt}Test for = {res}totalmembershipstrength
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22}  7944858{col 34} 23344.73{col 46} 114365.3{col 58}  7896566{col 70}  7993151
+   {txt}newer {c |}{res}{col 12}     24{col 22}  7973382{col 34} 24359.09{col 46} 119334.7{col 58}  7922991{col 70}  8023773
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22}  7959120{col 34} 16818.39{col 46} 116521.2{col 58}  7925286{col 70}  7992954
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}-28523.79{col 34} 33739.32{col 58}-96437.52{col 70} 39389.94
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res} -0.8454
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.2011         {txt}Pr(|T| > |t|) = {res}0.4023          {txt}Pr(T > t) = {res}0.7989
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}engage
+{txt}Test for = {res}totalcomments
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 97769.88{col 34} 279.5779{col 46} 1369.646{col 58} 97191.52{col 70} 98348.23
+   {txt}newer {c |}{res}{col 12}     24{col 22} 98037.71{col 34} 302.1438{col 46} 1480.196{col 58} 97412.68{col 70} 98662.74
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 97903.79{col 34} 204.5578{col 46} 1417.218{col 58} 97492.27{col 70} 98315.31
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}-267.8333{col 34} 411.6487{col 58}-1096.439{col 70} 560.7726
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res} -0.6506
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.2593         {txt}Pr(|T| > |t|) = {res}0.5185          {txt}Pr(T > t) = {res}0.7407
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}engage
+{txt}Test for = {res}mgmteffort
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 6691.833{col 34} 2.627659{col 46} 12.87285{col 58} 6686.398{col 70} 6697.269
+   {txt}newer {c |}{res}{col 12}     24{col 22}  6696.75{col 34} 3.474675{col 46} 17.02236{col 58} 6689.562{col 70} 6703.938
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 6694.292{col 34}  2.18452{col 46}  15.1348{col 58} 6689.897{col 70} 6698.686
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}-4.916667{col 34}  4.35637{col 58}-13.68558{col 70} 3.852251
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res} -1.1286
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.1325         {txt}Pr(|T| > |t|) = {res}0.2649          {txt}Pr(T > t) = {res}0.8675
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}both
+{txt}Test for = {res}dropouts
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} .5416667{col 34} .1200719{col 46}   .58823{col 58} .2932789{col 70} .7900544
+   {txt}newer {c |}{res}{col 12}     24{col 22}        0{col 34}        0{col 46}        0{col 58}        0{col 70}        0
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} .2708333{col 34} .0713322{col 46}  .494204{col 58} .1273315{col 70} .4143352
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22} .5416667{col 34} .1200719{col 58} .2999744{col 70} .7833589
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res}  4.5112
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}1.0000         {txt}Pr(|T| > |t|) = {res}0.0000          {txt}Pr(T > t) = {res}0.0000
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}both
+{txt}Test for = {res}totalmembershipstrength
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22}  8012790{col 34} 23915.28{col 46} 117160.5{col 58}  7963317{col 70}  8062262
+   {txt}newer {c |}{res}{col 12}     24{col 22}  8003339{col 34} 22397.29{col 46} 109723.8{col 58}  7957007{col 70}  8049671
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22}  8008064{col 34} 16222.19{col 46} 112390.6{col 58}  7975429{col 70}  8040699
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22} 9450.854{col 34} 32765.52{col 58}-56502.71{col 70} 75404.42
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res}  0.2884
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.6128         {txt}Pr(|T| > |t|) = {res}0.7743          {txt}Pr(T > t) = {res}0.3872
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}both
+{txt}Test for = {res}totalcomments
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 97794.04{col 34} 285.7262{col 46} 1399.767{col 58} 97202.97{col 70} 98385.11
+   {txt}newer {c |}{res}{col 12}     24{col 22} 97689.21{col 34} 287.7857{col 46} 1409.856{col 58} 97093.88{col 70} 98284.54
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 97741.63{col 34} 200.7454{col 46} 1390.805{col 58} 97337.78{col 70} 98145.47
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22} 104.8333{col 34} 405.5368{col 58}-711.4699{col 70} 921.1366
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res}  0.2585
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.6014         {txt}Pr(|T| > |t|) = {res}0.7972          {txt}Pr(T > t) = {res}0.3986
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}both
+{txt}Test for = {res}mgmteffort
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 7391.125{col 34} 2.898221{col 46} 14.19832{col 58}  7385.13{col 70}  7397.12
+   {txt}newer {c |}{res}{col 12}     24{col 22} 7394.125{col 34} 2.508184{col 46} 12.28754{col 58} 7388.936{col 70} 7399.314
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 7392.625{col 34} 1.908507{col 46} 13.22252{col 58} 7388.786{col 70} 7396.464
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}       -3{col 34} 3.832841{col 58}-10.71511{col 70} 4.715109
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res} -0.7827
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.2189         {txt}Pr(|T| > |t|) = {res}0.4378          {txt}Pr(T > t) = {res}0.7811
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}engage
+{txt}Test for = {res}dropouts
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 1.041667{col 34} .2516551{col 46} 1.232853{col 58} .5210783{col 70} 1.562255
+   {txt}newer {c |}{res}{col 12}     24{col 22}        0{col 34}        0{col 46}        0{col 58}        0{col 70}        0
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} .5208333{col 34} .1458333{col 46} 1.010363{col 58} .2274545{col 70} .8142122
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22} 1.041667{col 34} .2516551{col 58} .5351111{col 70} 1.548222
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res}  4.1393
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.9999         {txt}Pr(|T| > |t|) = {res}0.0001          {txt}Pr(T > t) = {res}0.0001
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}engage
+{txt}Test for = {res}totalmembershipstrength
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22}  7937556{col 34} 9991.795{col 46}  48949.6{col 58}  7916886{col 70}  7958225
+   {txt}newer {c |}{res}{col 12}     24{col 22}  7957055{col 34} 5424.566{col 46} 26574.84{col 58}  7945834{col 70}  7968277
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22}  7947306{col 34} 5800.901{col 46} 40189.82{col 58}  7935636{col 70}  7958975
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}-19499.69{col 34} 11369.34{col 58}-42384.98{col 70} 3385.607
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res} -1.7151
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.0465         {txt}Pr(|T| > |t|) = {res}0.0931          {txt}Pr(T > t) = {res}0.9535
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}engage
+{txt}Test for = {res}totalcomments
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 97667.54{col 34} 106.7987{col 46} 523.2048{col 58} 97446.61{col 70} 97888.47
+   {txt}newer {c |}{res}{col 12}     24{col 22} 97809.75{col 34} 74.62372{col 46} 365.5801{col 58} 97655.38{col 70} 97964.12
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 97738.65{col 34} 65.27593{col 46} 452.2449{col 58} 97607.33{col 70} 97869.96
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}-142.2083{col 34} 130.2869{col 58}-404.4622{col 70} 120.0456
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res} -1.0915
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.1404         {txt}Pr(|T| > |t|) = {res}0.2807          {txt}Pr(T > t) = {res}0.8596
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}engage
+{txt}Test for = {res}mgmteffort
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 6705.833{col 34} 2.411226{col 46} 11.81255{col 58} 6700.845{col 70} 6710.821
+   {txt}newer {c |}{res}{col 12}     24{col 22} 6706.792{col 34} 2.379699{col 46}  11.6581{col 58} 6701.869{col 70} 6711.714
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 6706.313{col 34} 1.677224{col 46} 11.62015{col 58} 6702.938{col 70} 6709.687
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}-.9583333{col 34} 3.387769{col 58}-7.777558{col 70} 5.860892
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res} -0.2829
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.3893         {txt}Pr(|T| > |t|) = {res}0.7785          {txt}Pr(T > t) = {res}0.6107
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}both
+{txt}Test for = {res}dropouts
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22}       .5{col 34} .1203859{col 46} .5897678{col 58} .2509629{col 70} .7490371
+   {txt}newer {c |}{res}{col 12}     24{col 22}        0{col 34}        0{col 46}        0{col 58}        0{col 70}        0
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22}      .25{col 34} .0698275{col 46} .4837794{col 58} .1095251{col 70} .3904749
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}       .5{col 34} .1203859{col 58} .2576758{col 70} .7423242
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res}  4.1533
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.9999         {txt}Pr(|T| > |t|) = {res}0.0001          {txt}Pr(T > t) = {res}0.0001
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}both
+{txt}Test for = {res}totalmembershipstrength
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22}  8004235{col 34} 6452.127{col 46} 31608.84{col 58}  7990888{col 70}  8017582
+   {txt}newer {c |}{res}{col 12}     24{col 22}  8026132{col 34} 4349.271{col 46} 21306.99{col 58}  8017135{col 70}  8035129
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22}  8015183{col 34} 4167.115{col 46} 28870.62{col 58}  8006800{col 70}  8023566
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}-21896.81{col 34} 7781.138{col 58}-37559.43{col 70}-6234.195
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res} -2.8141
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.0036         {txt}Pr(|T| > |t|) = {res}0.0072          {txt}Pr(T > t) = {res}0.9964
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}both
+{txt}Test for = {res}totalcomments
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 97684.79{col 34} 83.72222{col 46} 410.1534{col 58}  97511.6{col 70} 97857.98
+   {txt}newer {c |}{res}{col 12}     24{col 22} 97924.63{col 34} 53.53625{col 46}  262.273{col 58} 97813.88{col 70} 98035.37
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 97804.71{col 34} 52.17579{col 46} 361.4845{col 58} 97699.74{col 70} 97909.67
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}-239.8333{col 34} 99.37575{col 58}-439.8663{col 70}-39.80033
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res} -2.4134
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.0099         {txt}Pr(|T| > |t|) = {res}0.0198          {txt}Pr(T > t) = {res}0.9901
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}both
+{txt}Test for = {res}mgmteffort
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 7401.792{col 34} 1.786604{col 46} 8.752536{col 58} 7398.096{col 70} 7405.488
+   {txt}newer {c |}{res}{col 12}     24{col 22} 7402.333{col 34} 2.415729{col 46} 11.83461{col 58} 7397.336{col 70} 7407.331
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 7402.063{col 34} 1.486764{col 46}  10.3006{col 58} 7399.072{col 70} 7405.053
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}-.5416667{col 34} 3.004614{col 58} -6.58964{col 70} 5.506307
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res} -0.1803
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.4289         {txt}Pr(|T| > |t|) = {res}0.8577          {txt}Pr(T > t) = {res}0.5711
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}engage
+{txt}Test for = {res}dropouts
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22}     12.5{col 34}  .961204{col 46} 4.708918{col 58}  10.5116{col 70}  14.4884
+   {txt}newer {c |}{res}{col 12}     24{col 22}        0{col 34}        0{col 46}        0{col 58}        0{col 70}        0
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22}     6.25{col 34} 1.028193{col 46}  7.12353{col 58} 4.181542{col 70} 8.318458
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}     12.5{col 34}  .961204{col 58}  10.5652{col 70}  14.4348
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res} 13.0045
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}1.0000         {txt}Pr(|T| > |t|) = {res}0.0000          {txt}Pr(T > t) = {res}0.0000
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}engage
+{txt}Test for = {res}totalmembershipstrength
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22}  7789373{col 34} 30699.79{col 46} 150397.6{col 58}  7725866{col 70}  7852880
+   {txt}newer {c |}{res}{col 12}     24{col 22}  7978801{col 34}  15594.6{col 46} 76397.63{col 58}  7946541{col 70}  8011061
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22}  7884087{col 34} 21931.19{col 46} 151943.7{col 58}  7839967{col 70}  7928207
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}-189427.9{col 34} 34433.54{col 58}  -258739{col 70}-120116.8
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res} -5.5013
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.0000         {txt}Pr(|T| > |t|) = {res}0.0000          {txt}Pr(T > t) = {res}1.0000
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}engage
+{txt}Test for = {res}totalcomments
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 96481.79{col 34} 315.7171{col 46} 1546.691{col 58} 95828.68{col 70}  97134.9
+   {txt}newer {c |}{res}{col 12}     24{col 22} 98086.58{col 34} 199.8656{col 46} 979.1374{col 58} 97673.13{col 70} 98500.04
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 97284.19{col 34} 218.7736{col 46} 1515.708{col 58} 96844.07{col 70}  97724.3
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}-1604.792{col 34} 373.6623{col 58}-2356.935{col 70}-852.6484
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res} -4.2948
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.0000         {txt}Pr(|T| > |t|) = {res}0.0001          {txt}Pr(T > t) = {res}1.0000
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}engage
+{txt}Test for = {res}mgmteffort
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22}     6702{col 34} 2.059795{col 46} 10.09089{col 58} 6697.739{col 70} 6706.261
+   {txt}newer {c |}{res}{col 12}     24{col 22} 6703.375{col 34}  3.41449{col 46} 16.72752{col 58} 6696.312{col 70} 6710.438
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 6702.688{col 34} 1.975056{col 46} 13.68359{col 58} 6698.714{col 70} 6706.661
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}   -1.375{col 34} 3.987668{col 58}-9.401759{col 70} 6.651759
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res} -0.3448
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.3659         {txt}Pr(|T| > |t|) = {res}0.7318          {txt}Pr(T > t) = {res}0.6341
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}both
+{txt}Test for = {res}dropouts
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 5.916667{col 34} .4460644{col 46}  2.18526{col 58} 4.993912{col 70} 6.839421
+   {txt}newer {c |}{res}{col 12}     24{col 22}        0{col 34}        0{col 46}        0{col 58}        0{col 70}        0
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 2.958333{col 34} .4846567{col 46}   3.3578{col 58}  1.98333{col 70} 3.933337
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22} 5.916667{col 34} .4460644{col 58} 5.018786{col 70} 6.814548
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res} 13.2642
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}1.0000         {txt}Pr(|T| > |t|) = {res}0.0000          {txt}Pr(T > t) = {res}0.0000
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}both
+{txt}Test for = {res}totalmembershipstrength
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22}  7926216{col 34} 20769.98{col 46} 101751.7{col 58}  7883250{col 70}  7969182
+   {txt}newer {c |}{res}{col 12}     24{col 22}  8019926{col 34} 14833.75{col 46} 72670.24{col 58}  7989240{col 70}  8050612
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22}  7973071{col 34} 14356.31{col 46} 99463.42{col 58}  7944190{col 70}  8001952
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}-93710.15{col 34} 25523.17{col 58}-145085.6{col 70}-42334.67
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res} -3.6716
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.0003         {txt}Pr(|T| > |t|) = {res}0.0006          {txt}Pr(T > t) = {res}0.9997
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}both
+{txt}Test for = {res}totalcomments
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 97043.75{col 34} 239.6795{col 46} 1174.185{col 58} 96547.94{col 70} 97539.56
+   {txt}newer {c |}{res}{col 12}     24{col 22} 97832.88{col 34} 187.0736{col 46} 916.4697{col 58} 97445.88{col 70} 98219.87
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 97438.31{col 34}  161.032{col 46} 1115.663{col 58} 97114.36{col 70} 97762.27
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22} -789.125{col 34} 304.0441{col 58}-1401.134{col 70} -177.116
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res} -2.5954
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.0063         {txt}Pr(|T| > |t|) = {res}0.0126          {txt}Pr(T > t) = {res}0.9937
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}both
+{txt}Test for = {res}mgmteffort
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 7402.292{col 34} 2.323072{col 46} 11.38068{col 58} 7397.486{col 70} 7407.097
+   {txt}newer {c |}{res}{col 12}     24{col 22} 7399.542{col 34} 2.214886{col 46} 10.85068{col 58}  7394.96{col 70} 7404.124
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 7400.917{col 34} 1.600319{col 46} 11.08734{col 58} 7397.697{col 70} 7404.136
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}     2.75{col 34} 3.209733{col 58}-3.710857{col 70} 9.210857
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res}  0.8568
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.8020         {txt}Pr(|T| > |t|) = {res}0.3960          {txt}Pr(T > t) = {res}0.1980
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}engage
+{txt}Test for = {res}dropouts
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 12.16667{col 34} .6827764{col 46} 3.344907{col 58} 10.75424{col 70}  13.5791
+   {txt}newer {c |}{res}{col 12}     24{col 22}        0{col 34}        0{col 46}        0{col 58}        0{col 70}        0
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 6.083333{col 34} .9494461{col 46} 6.577956{col 58} 4.173294{col 70} 7.993373
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22} 12.16667{col 34} .6827764{col 58} 10.79231{col 70} 13.54102
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res} 17.8194
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}1.0000         {txt}Pr(|T| > |t|) = {res}0.0000          {txt}Pr(T > t) = {res}0.0000
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}engage
+{txt}Test for = {res}totalmembershipstrength
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22}  7776525{col 34} 11734.92{col 46} 57489.11{col 58}  7752249{col 70}  7800800
+   {txt}newer {c |}{res}{col 12}     24{col 22}  7977620{col 34} 5969.616{col 46} 29245.03{col 58}  7965271{col 70}  7989970
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22}  7877073{col 34} 16047.36{col 46} 111179.4{col 58}  7844789{col 70}  7909356
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}-201095.8{col 34} 13166.04{col 58}-227597.6{col 70}-174593.9
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res}-15.2738
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.0000         {txt}Pr(|T| > |t|) = {res}0.0000          {txt}Pr(T > t) = {res}1.0000
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}engage
+{txt}Test for = {res}totalcomments
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 96318.88{col 34} 110.1582{col 46} 539.6626{col 58}    96091{col 70} 96546.75
+   {txt}newer {c |}{res}{col 12}     24{col 22} 98045.75{col 34} 81.10602{col 46} 397.3367{col 58} 97877.97{col 70} 98213.53
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 97182.31{col 34} 142.9718{col 46} 990.5377{col 58} 96894.69{col 70} 97469.93
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}-1726.875{col 34} 136.7955{col 58} -2002.23{col 70} -1451.52
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res}-12.6238
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.0000         {txt}Pr(|T| > |t|) = {res}0.0000          {txt}Pr(T > t) = {res}1.0000
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}engage
+{txt}Test for = {res}mgmteffort
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 6711.083{col 34} 2.282508{col 46} 11.18196{col 58} 6706.362{col 70} 6715.805
+   {txt}newer {c |}{res}{col 12}     24{col 22}     6715{col 34} 2.403198{col 46} 11.77322{col 58} 6710.029{col 70} 6719.971
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 6713.042{col 34} 1.664171{col 46} 11.52972{col 58} 6709.694{col 70}  6716.39
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}-3.916667{col 34} 3.314394{col 58} -10.5882{col 70} 2.754862
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res} -1.1817
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.1217         {txt}Pr(|T| > |t|) = {res}0.2434          {txt}Pr(T > t) = {res}0.8783
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}both
+{txt}Test for = {res}dropouts
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22}    6.375{col 34} .4883145{col 46} 2.392243{col 58} 5.364844{col 70} 7.385156
+   {txt}newer {c |}{res}{col 12}     24{col 22}        0{col 34}        0{col 46}        0{col 58}        0{col 70}        0
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22}   3.1875{col 34} .5239446{col 46} 3.629995{col 58} 2.133459{col 70} 4.241541
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}    6.375{col 34} .4883145{col 58} 5.392074{col 70} 7.357926
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res} 13.0551
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}1.0000         {txt}Pr(|T| > |t|) = {res}0.0000          {txt}Pr(T > t) = {res}0.0000
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}both
+{txt}Test for = {res}totalmembershipstrength
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22}  7922154{col 34} 10603.13{col 46}  51944.5{col 58}  7900220{col 70}  7944089
+   {txt}newer {c |}{res}{col 12}     24{col 22}  8027551{col 34} 6712.557{col 46} 32884.68{col 58}  8013665{col 70}  8041437
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22}  7974853{col 34} 9880.319{col 46} 68452.86{col 58}  7954976{col 70}  7994729
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}-105396.4{col 34} 12549.29{col 58}-130656.8{col 70}-80135.96
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res} -8.3986
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.0000         {txt}Pr(|T| > |t|) = {res}0.0000          {txt}Pr(T > t) = {res}1.0000
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}both
+{txt}Test for = {res}totalcomments
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 97041.83{col 34} 103.2057{col 46} 505.6027{col 58} 96828.34{col 70} 97255.33
+   {txt}newer {c |}{res}{col 12}     24{col 22} 97972.38{col 34} 85.51709{col 46} 418.9465{col 58} 97795.47{col 70} 98149.28
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22}  97507.1{col 34} 94.87615{col 46} 657.3213{col 58} 97316.24{col 70} 97697.97
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}-930.5417{col 34} 134.0321{col 58}-1200.334{col 70}-660.7491
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res} -6.9427
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.0000         {txt}Pr(|T| > |t|) = {res}0.0000          {txt}Pr(T > t) = {res}1.0000
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}both
+{txt}Test for = {res}mgmteffort
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 7409.083{col 34} 2.195117{col 46} 10.75383{col 58} 7404.542{col 70} 7413.624
+   {txt}newer {c |}{res}{col 12}     24{col 22} 7407.875{col 34} 2.526893{col 46}  12.3792{col 58} 7402.648{col 70} 7413.102
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 7408.479{col 34} 1.658042{col 46} 11.48725{col 58} 7405.144{col 70} 7411.815
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22} 1.208333{col 34} 3.347197{col 58}-5.529225{col 70} 7.945892
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res}  0.3610
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.6401         {txt}Pr(|T| > |t|) = {res}0.7198          {txt}Pr(T > t) = {res}0.3599
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}engage
+{txt}Test for = {res}dropouts
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22}        0{col 34}        0{col 46}        0{col 58}        0{col 70}        0
+   {txt}newer {c |}{res}{col 12}     24{col 22}        0{col 34}        0{col 46}        0{col 58}        0{col 70}        0
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22}        0{col 34}        0{col 46}        0{col 58}        0{col 70}        0
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}        0{col 34}        0{col 58}        0{col 70}        0
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res}       .
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}     .         {txt}Pr(|T| > |t|) = {res}     .          {txt}Pr(T > t) = {res}     .
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}engage
+{txt}Test for = {res}totalmembershipstrength
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 1.16e+07{col 34} 36977.47{col 46} 181151.9{col 58} 1.16e+07{col 70} 1.17e+07
+   {txt}newer {c |}{res}{col 12}     24{col 22} 1.16e+07{col 34} 37811.99{col 46} 185240.2{col 58} 1.15e+07{col 70} 1.17e+07
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 1.16e+07{col 34} 26239.07{col 46} 181789.6{col 58} 1.16e+07{col 70} 1.17e+07
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22} 27752.17{col 34} 52887.43{col 58} -78704.7{col 70}   134209
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res}  0.5247
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.6989         {txt}Pr(|T| > |t|) = {res}0.6023          {txt}Pr(T > t) = {res}0.3011
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}engage
+{txt}Test for = {res}totalcomments
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 146451.8{col 34} 454.8599{col 46} 2228.349{col 58} 145510.9{col 70} 147392.8
+   {txt}newer {c |}{res}{col 12}     24{col 22}   146121{col 34} 451.8907{col 46} 2213.803{col 58} 145186.2{col 70} 147055.8
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 146286.4{col 34} 318.0739{col 46}  2203.68{col 58} 145646.6{col 70} 146926.3
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22} 330.7917{col 34} 641.1729{col 58}-959.8224{col 70} 1621.406
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res}  0.5159
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.6958         {txt}Pr(|T| > |t|) = {res}0.6084          {txt}Pr(T > t) = {res}0.3042
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}engage
+{txt}Test for = {res}mgmteffort
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 6737.333{col 34} 2.177509{col 46} 10.66757{col 58} 6732.829{col 70} 6741.838
+   {txt}newer {c |}{res}{col 12}     24{col 22}   6738.5{col 34} 1.797744{col 46} 8.807112{col 58} 6734.781{col 70} 6742.219
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 6737.917{col 34} 1.399352{col 46} 9.694994{col 58} 6735.102{col 70} 6740.732
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}-1.166667{col 34} 2.823726{col 58}-6.850533{col 70} 4.517199
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res} -0.4132
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.3407         {txt}Pr(|T| > |t|) = {res}0.6814          {txt}Pr(T > t) = {res}0.6593
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}both
+{txt}Test for = {res}dropouts
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22}        0{col 34}        0{col 46}        0{col 58}        0{col 70}        0
+   {txt}newer {c |}{res}{col 12}     24{col 22}        0{col 34}        0{col 46}        0{col 58}        0{col 70}        0
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22}        0{col 34}        0{col 46}        0{col 58}        0{col 70}        0
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}        0{col 34}        0{col 58}        0{col 70}        0
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res}       .
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}     .         {txt}Pr(|T| > |t|) = {res}     .          {txt}Pr(T > t) = {res}     .
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}both
+{txt}Test for = {res}totalmembershipstrength
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 1.17e+07{col 34} 39561.48{col 46} 193810.9{col 58} 1.16e+07{col 70} 1.18e+07
+   {txt}newer {c |}{res}{col 12}     24{col 22} 1.17e+07{col 34} 37923.14{col 46} 185784.7{col 58} 1.16e+07{col 70} 1.18e+07
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 1.17e+07{col 34} 27108.84{col 46} 187815.5{col 58} 1.17e+07{col 70} 1.18e+07
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22} 2915.125{col 34} 54802.14{col 58}-107395.9{col 70} 113226.1
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res}  0.0532
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.5211         {txt}Pr(|T| > |t|) = {res}0.9578          {txt}Pr(T > t) = {res}0.4789
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}both
+{txt}Test for = {res}totalcomments
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 146887.1{col 34} 492.0955{col 46} 2410.766{col 58} 145869.1{col 70} 147905.1
+   {txt}newer {c |}{res}{col 12}     24{col 22} 146870.5{col 34} 483.5804{col 46}  2369.05{col 58} 145870.1{col 70} 147870.8
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 146878.8{col 34} 341.2792{col 46} 2364.452{col 58} 146192.2{col 70} 147565.4
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22} 16.66667{col 34} 689.9333{col 58}-1372.097{col 70}  1405.43
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res}  0.0242
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.5096         {txt}Pr(|T| > |t|) = {res}0.9808          {txt}Pr(T > t) = {res}0.4904
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}both
+{txt}Test for = {res}mgmteffort
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 7433.333{col 34} 2.091794{col 46} 10.24766{col 58} 7429.006{col 70} 7437.661
+   {txt}newer {c |}{res}{col 12}     24{col 22} 7431.458{col 34} 1.896774{col 46} 9.292256{col 58} 7427.535{col 70} 7435.382
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 7432.396{col 34} 1.403434{col 46} 9.723277{col 58} 7429.572{col 70} 7435.219
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}    1.875{col 34} 2.823713{col 58}-3.808839{col 70} 7.558839
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res}  0.6640
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.7450         {txt}Pr(|T| > |t|) = {res}0.5100          {txt}Pr(T > t) = {res}0.2550
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}engage
+{txt}Test for = {res}dropouts
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22}        0{col 34}        0{col 46}        0{col 58}        0{col 70}        0
+   {txt}newer {c |}{res}{col 12}     24{col 22}        0{col 34}        0{col 46}        0{col 58}        0{col 70}        0
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22}        0{col 34}        0{col 46}        0{col 58}        0{col 70}        0
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}        0{col 34}        0{col 58}        0{col 70}        0
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res}       .
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}     .         {txt}Pr(|T| > |t|) = {res}     .          {txt}Pr(T > t) = {res}     .
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}engage
+{txt}Test for = {res}totalmembershipstrength
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 1.17e+07{col 34} 7607.312{col 46} 37268.06{col 58} 1.17e+07{col 70} 1.17e+07
+   {txt}newer {c |}{res}{col 12}     24{col 22} 1.17e+07{col 34} 7565.924{col 46} 37065.31{col 58} 1.16e+07{col 70} 1.17e+07
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 1.17e+07{col 34}  5440.07{col 46} 37689.91{col 58} 1.17e+07{col 70} 1.17e+07
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22} 16385.29{col 34} 10729.14{col 58}-5211.343{col 70} 37981.93
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res}  1.5272
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.9332         {txt}Pr(|T| > |t|) = {res}0.1336          {txt}Pr(T > t) = {res}0.0668
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}engage
+{txt}Test for = {res}totalcomments
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 146868.2{col 34} 94.30312{col 46} 461.9891{col 58} 146673.1{col 70} 147063.2
+   {txt}newer {c |}{res}{col 12}     24{col 22} 146718.1{col 34}   89.143{col 46} 436.7097{col 58} 146533.7{col 70} 146902.5
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 146793.1{col 34} 65.11628{col 46} 451.1388{col 58} 146662.1{col 70} 146924.1
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22} 150.0833{col 34} 129.7673{col 58}-111.1247{col 70} 411.2914
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res}  1.1566
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.8733         {txt}Pr(|T| > |t|) = {res}0.2534          {txt}Pr(T > t) = {res}0.1267
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}engage
+{txt}Test for = {res}mgmteffort
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 6756.208{col 34} 1.616244{col 46} 7.917944{col 58} 6752.865{col 70} 6759.552
+   {txt}newer {c |}{res}{col 12}     24{col 22} 6755.292{col 34}  1.55279{col 46} 7.607086{col 58} 6752.079{col 70} 6758.504
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22}  6755.75{col 34} 1.110675{col 46} 7.694983{col 58} 6753.516{col 70} 6757.984
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22} .9166667{col 34} 2.241294{col 58}-3.594825{col 70} 5.428158
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res}  0.4090
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.6578         {txt}Pr(|T| > |t|) = {res}0.6844          {txt}Pr(T > t) = {res}0.3422
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}both
+{txt}Test for = {res}dropouts
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22}        0{col 34}        0{col 46}        0{col 58}        0{col 70}        0
+   {txt}newer {c |}{res}{col 12}     24{col 22}        0{col 34}        0{col 46}        0{col 58}        0{col 70}        0
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22}        0{col 34}        0{col 46}        0{col 58}        0{col 70}        0
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}        0{col 34}        0{col 58}        0{col 70}        0
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res}       .
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}     .         {txt}Pr(|T| > |t|) = {res}     .          {txt}Pr(T > t) = {res}     .
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}both
+{txt}Test for = {res}totalmembershipstrength
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 1.17e+07{col 34} 8365.647{col 46} 40983.13{col 58} 1.17e+07{col 70} 1.17e+07
+   {txt}newer {c |}{res}{col 12}     24{col 22} 1.17e+07{col 34} 5414.539{col 46} 26525.71{col 58} 1.17e+07{col 70} 1.17e+07
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 1.17e+07{col 34} 4949.548{col 46} 34291.48{col 58} 1.17e+07{col 70} 1.17e+07
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}  6145.75{col 34} 9965.003{col 58}-13912.76{col 70} 26204.26
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res}  0.6167
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.7298         {txt}Pr(|T| > |t|) = {res}0.5405          {txt}Pr(T > t) = {res}0.2702
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}both
+{txt}Test for = {res}totalcomments
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 146871.8{col 34} 110.2512{col 46} 540.1186{col 58} 146643.7{col 70} 147099.8
+   {txt}newer {c |}{res}{col 12}     24{col 22} 146816.1{col 34} 68.61756{col 46}  336.156{col 58} 146674.1{col 70}   146958
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 146843.9{col 34} 64.36388{col 46}  445.926{col 58} 146714.4{col 70} 146973.4
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22} 55.66667{col 34} 129.8603{col 58}-205.7286{col 70}  317.062
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res}  0.4287
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.6649         {txt}Pr(|T| > |t|) = {res}0.6702          {txt}Pr(T > t) = {res}0.3351
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}both
+{txt}Test for = {res}mgmteffort
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 7450.083{col 34} 1.509531{col 46} 7.395161{col 58} 7446.961{col 70} 7453.206
+   {txt}newer {c |}{res}{col 12}     24{col 22} 7449.292{col 34} 1.391589{col 46} 6.817364{col 58} 7446.413{col 70}  7452.17
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 7449.688{col 34} 1.017208{col 46} 7.047427{col 58} 7447.641{col 70} 7451.734
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22} .7916667{col 34} 2.053096{col 58}-3.341001{col 70} 4.924334
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res}  0.3856
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.6492         {txt}Pr(|T| > |t|) = {res}0.7016          {txt}Pr(T > t) = {res}0.3508
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}engage
+{txt}Test for = {res}dropouts
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} .3333333{col 34} .1152607{col 46} .5646597{col 58} .0948985{col 70} .5717682
+   {txt}newer {c |}{res}{col 12}     24{col 22}        0{col 34}        0{col 46}        0{col 58}        0{col 70}        0
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} .1666667{col 34} .0619807{col 46} .4294149{col 58} .0419776{col 70} .2913558
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22} .3333333{col 34} .1152607{col 58} .1013256{col 70}  .565341
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res}  2.8920
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.9971         {txt}Pr(|T| > |t|) = {res}0.0058          {txt}Pr(T > t) = {res}0.0029
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}engage
+{txt}Test for = {res}totalmembershipstrength
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 1.17e+07{col 34}  30683.6{col 46} 150318.3{col 58} 1.16e+07{col 70} 1.17e+07
+   {txt}newer {c |}{res}{col 12}     24{col 22} 1.17e+07{col 34} 35848.83{col 46} 175622.7{col 58} 1.16e+07{col 70} 1.18e+07
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 1.17e+07{col 34}  23350.9{col 46} 161779.8{col 58} 1.16e+07{col 70} 1.17e+07
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}-9225.333{col 34} 47187.09{col 58}  -104208{col 70} 85757.36
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res} -0.1955
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.4229         {txt}Pr(|T| > |t|) = {res}0.8459          {txt}Pr(T > t) = {res}0.5771
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}engage
+{txt}Test for = {res}totalcomments
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 147105.6{col 34} 370.4855{col 46} 1815.001{col 58} 146339.2{col 70}   147872
+   {txt}newer {c |}{res}{col 12}     24{col 22} 147222.3{col 34} 448.4067{col 46} 2196.735{col 58} 146294.7{col 70} 148149.8
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 147163.9{col 34} 287.8451{col 46} 1994.249{col 58} 146584.8{col 70}   147743
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}-116.6667{col 34} 581.6598{col 58}-1287.487{col 70} 1054.154
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res} -0.2006
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.4210         {txt}Pr(|T| > |t|) = {res}0.8419          {txt}Pr(T > t) = {res}0.5790
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}engage
+{txt}Test for = {res}mgmteffort
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 6729.333{col 34} 2.110761{col 46} 10.34058{col 58} 6724.967{col 70}   6733.7
+   {txt}newer {c |}{res}{col 12}     24{col 22} 6733.417{col 34} 2.148404{col 46} 10.52499{col 58} 6728.972{col 70} 6737.861
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 6731.375{col 34} 1.519269{col 46}  10.5258{col 58} 6728.319{col 70} 6734.431
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}-4.083333{col 34} 3.011802{col 58}-10.14578{col 70} 1.979111
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res} -1.3558
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.0909         {txt}Pr(|T| > |t|) = {res}0.1818          {txt}Pr(T > t) = {res}0.9091
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}both
+{txt}Test for = {res}dropouts
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} .0416667{col 34} .0416667{col 46} .2041241{col 58}-.0445274{col 70} .1278607
+   {txt}newer {c |}{res}{col 12}     24{col 22}        0{col 34}        0{col 46}        0{col 58}        0{col 70}        0
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} .0208333{col 34} .0208333{col 46} .1443376{col 58}-.0210779{col 70} .0627446
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22} .0416667{col 34} .0416667{col 58} -.042204{col 70} .1255373
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res}  1.0000
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.8387         {txt}Pr(|T| > |t|) = {res}0.3225          {txt}Pr(T > t) = {res}0.1613
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}both
+{txt}Test for = {res}totalmembershipstrength
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 1.17e+07{col 34} 39531.92{col 46} 193666.1{col 58} 1.16e+07{col 70} 1.18e+07
+   {txt}newer {c |}{res}{col 12}     24{col 22} 1.17e+07{col 34} 34970.65{col 46} 171320.5{col 58} 1.16e+07{col 70} 1.18e+07
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 1.17e+07{col 34} 26157.65{col 46} 181225.5{col 58} 1.16e+07{col 70} 1.17e+07
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}-22153.13{col 34} 52779.91{col 58}-128393.6{col 70} 84087.32
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res} -0.4197
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.3383         {txt}Pr(|T| > |t|) = {res}0.6766          {txt}Pr(T > t) = {res}0.6617
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}both
+{txt}Test for = {res}totalcomments
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 146389.8{col 34}  485.129{col 46} 2376.637{col 58} 145386.2{col 70} 147393.4
+   {txt}newer {c |}{res}{col 12}     24{col 22} 146586.8{col 34} 429.5177{col 46} 2104.199{col 58} 145698.2{col 70} 147475.3
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 146488.3{col 34} 320.8303{col 46} 2222.778{col 58} 145842.8{col 70} 147133.7
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}-196.9583{col 34} 647.9473{col 58}-1501.209{col 70} 1107.292
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res} -0.3040
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.3813         {txt}Pr(|T| > |t|) = {res}0.7625          {txt}Pr(T > t) = {res}0.6187
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}both
+{txt}Test for = {res}mgmteffort
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 7426.667{col 34} 2.275155{col 46} 11.14594{col 58}  7421.96{col 70} 7431.373
+   {txt}newer {c |}{res}{col 12}     24{col 22} 7426.208{col 34} 2.388817{col 46} 11.70277{col 58} 7421.267{col 70}  7431.15
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 7426.438{col 34} 1.632153{col 46} 11.30789{col 58} 7423.154{col 70} 7429.721
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22} .4583333{col 34} 3.298905{col 58}-6.182018{col 70} 7.098685
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res}  0.1389
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.5549         {txt}Pr(|T| > |t|) = {res}0.8901          {txt}Pr(T > t) = {res}0.4451
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}engage
+{txt}Test for = {res}dropouts
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22}      .25{col 34} .1240909{col 46} .6079188{col 58}-.0067016{col 70} .5067016
+   {txt}newer {c |}{res}{col 12}     24{col 22}        0{col 34}        0{col 46}        0{col 58}        0{col 70}        0
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22}     .125{col 34} .0640326{col 46} .4436311{col 58} -.003817{col 70}  .253817
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}      .25{col 34} .1240909{col 58}  .000218{col 70}  .499782
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res}  2.0147
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.9751         {txt}Pr(|T| > |t|) = {res}0.0498          {txt}Pr(T > t) = {res}0.0249
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}engage
+{txt}Test for = {res}totalmembershipstrength
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 1.17e+07{col 34} 6161.595{col 46} 30185.53{col 58} 1.17e+07{col 70} 1.17e+07
+   {txt}newer {c |}{res}{col 12}     24{col 22} 1.17e+07{col 34} 6434.049{col 46} 31520.27{col 58} 1.17e+07{col 70} 1.17e+07
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 1.17e+07{col 34} 4566.643{col 46} 31638.63{col 58} 1.17e+07{col 70} 1.17e+07
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}-16429.63{col 34} 8908.548{col 58} -34361.6{col 70} 1502.353
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res} -1.8443
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.0358         {txt}Pr(|T| > |t|) = {res}0.0716          {txt}Pr(T > t) = {res}0.9642
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}engage
+{txt}Test for = {res}totalcomments
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 146869.7{col 34} 71.56169{col 46} 350.5792{col 58} 146721.6{col 70} 147017.7
+   {txt}newer {c |}{res}{col 12}     24{col 22} 147063.2{col 34} 73.69204{col 46} 361.0158{col 58} 146910.7{col 70} 147215.6
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 146966.4{col 34} 52.73456{col 46} 365.3557{col 58} 146860.3{col 70} 147072.5
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}   -193.5{col 34} 102.7209{col 58}-400.2665{col 70} 13.26653
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res} -1.8837
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.0330         {txt}Pr(|T| > |t|) = {res}0.0659          {txt}Pr(T > t) = {res}0.9670
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}engage
+{txt}Test for = {res}mgmteffort
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 6756.708{col 34} 1.859639{col 46} 9.110334{col 58} 6752.861{col 70} 6760.555
+   {txt}newer {c |}{res}{col 12}     24{col 22} 6755.833{col 34} 1.793372{col 46} 8.785693{col 58} 6752.123{col 70} 6759.543
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 6756.271{col 34} 1.279524{col 46} 8.864799{col 58} 6753.697{col 70} 6758.845
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}     .875{col 34} 2.583494{col 58}-4.325304{col 70} 6.075304
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res}  0.3387
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.6318         {txt}Pr(|T| > |t|) = {res}0.7364          {txt}Pr(T > t) = {res}0.3682
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}both
+{txt}Test for = {res}dropouts
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} .0416667{col 34} .0416667{col 46} .2041241{col 58}-.0445274{col 70} .1278607
+   {txt}newer {c |}{res}{col 12}     24{col 22}        0{col 34}        0{col 46}        0{col 58}        0{col 70}        0
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} .0208333{col 34} .0208333{col 46} .1443376{col 58}-.0210779{col 70} .0627446
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22} .0416667{col 34} .0416667{col 58} -.042204{col 70} .1255373
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res}  1.0000
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.8387         {txt}Pr(|T| > |t|) = {res}0.3225          {txt}Pr(T > t) = {res}0.1613
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}both
+{txt}Test for = {res}totalmembershipstrength
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 1.17e+07{col 34} 6946.389{col 46} 34030.22{col 58} 1.17e+07{col 70} 1.18e+07
+   {txt}newer {c |}{res}{col 12}     24{col 22} 1.17e+07{col 34} 6425.296{col 46} 31477.39{col 58} 1.17e+07{col 70} 1.17e+07
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 1.17e+07{col 34}  4803.58{col 46} 33280.18{col 58} 1.17e+07{col 70} 1.17e+07
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22} 14808.58{col 34} 9462.386{col 58}-4238.211{col 70} 33855.38
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res}  1.5650
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.9378         {txt}Pr(|T| > |t|) = {res}0.1244          {txt}Pr(T > t) = {res}0.0622
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}both
+{txt}Test for = {res}totalcomments
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 147071.3{col 34} 78.94562{col 46}  386.753{col 58} 146907.9{col 70} 147234.6
+   {txt}newer {c |}{res}{col 12}     24{col 22} 146808.1{col 34} 75.12522{col 46} 368.0369{col 58} 146652.7{col 70} 146963.5
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 146939.7{col 34}  57.2202{col 46} 396.4331{col 58} 146824.6{col 70} 147054.8
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}  263.125{col 34}  108.978{col 58} 43.76363{col 70} 482.4864
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res}  2.4145
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.9901         {txt}Pr(|T| > |t|) = {res}0.0198          {txt}Pr(T > t) = {res}0.0099
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}both
+{txt}Test for = {res}mgmteffort
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 7451.792{col 34} 1.570769{col 46} 7.695166{col 58} 7448.542{col 70} 7455.041
+   {txt}newer {c |}{res}{col 12}     24{col 22} 7451.958{col 34} 1.460195{col 46} 7.153468{col 58} 7448.938{col 70} 7454.979
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 7451.875{col 34} 1.060921{col 46} 7.350279{col 58} 7449.741{col 70} 7454.009
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}-.1666667{col 34} 2.144641{col 58}-4.483606{col 70} 4.150273
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res} -0.0777
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.4692         {txt}Pr(|T| > |t|) = {res}0.9384          {txt}Pr(T > t) = {res}0.5308
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}engage
+{txt}Test for = {res}dropouts
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22}     6.25{col 34} .3573757{col 46} 1.750776{col 58} 5.510712{col 70} 6.989288
+   {txt}newer {c |}{res}{col 12}     24{col 22}        0{col 34}        0{col 46}        0{col 58}        0{col 70}        0
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22}    3.125{col 34} .4889062{col 46} 3.387241{col 58} 2.141448{col 70} 4.108552
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}     6.25{col 34} .3573757{col 58}  5.53064{col 70}  6.96936
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res} 17.4886
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}1.0000         {txt}Pr(|T| > |t|) = {res}0.0000          {txt}Pr(T > t) = {res}0.0000
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}engage
+{txt}Test for = {res}totalmembershipstrength
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 1.16e+07{col 34} 40004.86{col 46}   195983{col 58} 1.15e+07{col 70} 1.17e+07
+   {txt}newer {c |}{res}{col 12}     24{col 22} 1.17e+07{col 34} 35758.07{col 46} 175178.1{col 58} 1.16e+07{col 70} 1.17e+07
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 1.16e+07{col 34} 26894.73{col 46} 186332.2{col 58} 1.16e+07{col 70} 1.17e+07
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}-59582.63{col 34} 53656.58{col 58}-167587.7{col 70} 48422.47
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res} -1.1104
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.1363         {txt}Pr(|T| > |t|) = {res}0.2726          {txt}Pr(T > t) = {res}0.8637
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}engage
+{txt}Test for = {res}totalcomments
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 146454.4{col 34} 507.0518{col 46} 2484.037{col 58} 145405.5{col 70} 147503.3
+   {txt}newer {c |}{res}{col 12}     24{col 22} 146804.2{col 34} 455.1515{col 46} 2229.778{col 58} 145862.6{col 70} 147745.7
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 146629.3{col 34} 338.0051{col 46} 2341.768{col 58} 145949.3{col 70} 147309.2
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}-349.7917{col 34} 681.3695{col 58}-1721.317{col 70} 1021.734
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res} -0.5134
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.3051         {txt}Pr(|T| > |t|) = {res}0.6102          {txt}Pr(T > t) = {res}0.6949
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}engage
+{txt}Test for = {res}mgmteffort
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 6729.792{col 34} 2.283351{col 46} 11.18609{col 58} 6725.068{col 70} 6734.515
+   {txt}newer {c |}{res}{col 12}     24{col 22} 6727.292{col 34} 1.913415{col 46}  9.37378{col 58} 6723.333{col 70}  6731.25
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 6728.542{col 34}  1.48484{col 46} 10.28727{col 58} 6725.555{col 70} 6731.529
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}      2.5{col 34} 2.979068{col 58}-3.496554{col 70} 8.496554
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res}  0.8392
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.7971         {txt}Pr(|T| > |t|) = {res}0.4057          {txt}Pr(T > t) = {res}0.2029
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}both
+{txt}Test for = {res}dropouts
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 3.083333{col 34} .4034124{col 46} 1.976309{col 58} 2.248811{col 70} 3.917855
+   {txt}newer {c |}{res}{col 12}     24{col 22}        0{col 34}        0{col 46}        0{col 58}        0{col 70}        0
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 1.541667{col 34}  .300647{col 46} 2.082943{col 58}  .936843{col 70}  2.14649
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22} 3.083333{col 34} .4034124{col 58} 2.271306{col 70}  3.89536
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res}  7.6431
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}1.0000         {txt}Pr(|T| > |t|) = {res}0.0000          {txt}Pr(T > t) = {res}0.0000
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}both
+{txt}Test for = {res}totalmembershipstrength
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 1.17e+07{col 34} 42514.23{col 46} 208276.3{col 58} 1.16e+07{col 70} 1.18e+07
+   {txt}newer {c |}{res}{col 12}     24{col 22} 1.17e+07{col 34} 32701.87{col 46} 160205.8{col 58} 1.16e+07{col 70} 1.18e+07
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 1.17e+07{col 34} 26684.58{col 46} 184876.2{col 58} 1.16e+07{col 70} 1.17e+07
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}-39146.54{col 34} 53636.48{col 58}-147111.2{col 70}  68818.1
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res} -0.7298
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.2346         {txt}Pr(|T| > |t|) = {res}0.4692          {txt}Pr(T > t) = {res}0.7654
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}both
+{txt}Test for = {res}totalcomments
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 146286.8{col 34} 533.4033{col 46} 2613.132{col 58} 145183.4{col 70} 147390.3
+   {txt}newer {c |}{res}{col 12}     24{col 22} 146549.8{col 34} 407.5708{col 46} 1996.681{col 58} 145706.7{col 70} 147392.9
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 146418.3{col 34} 332.6095{col 46} 2304.386{col 58} 145749.2{col 70} 147087.4
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}-262.9583{col 34} 671.2921{col 58}-1614.199{col 70} 1088.283
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res} -0.3917
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.3485         {txt}Pr(|T| > |t|) = {res}0.6971          {txt}Pr(T > t) = {res}0.6515
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}both
+{txt}Test for = {res}mgmteffort
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 7424.125{col 34} 1.887519{col 46} 9.246915{col 58}  7420.22{col 70}  7428.03
+   {txt}newer {c |}{res}{col 12}     24{col 22}     7424{col 34} 2.846304{col 46} 13.94399{col 58} 7418.112{col 70} 7429.888
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 7424.063{col 34} 1.689403{col 46} 11.70453{col 58} 7420.664{col 70} 7427.461
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}     .125{col 34} 3.415286{col 58}-6.749613{col 70} 6.999613
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res}  0.0366
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.5145         {txt}Pr(|T| > |t|) = {res}0.9710          {txt}Pr(T > t) = {res}0.4855
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}engage
+{txt}Test for = {res}dropouts
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22}     5.75{col 34} .5905353{col 46}  2.89302{col 58} 4.528385{col 70} 6.971615
+   {txt}newer {c |}{res}{col 12}     24{col 22}        0{col 34}        0{col 46}        0{col 58}        0{col 70}        0
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22}    2.875{col 34} .5110698{col 46} 3.540796{col 58}  1.84686{col 70}  3.90314
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}     5.75{col 34} .5905353{col 58} 4.561314{col 70} 6.938686
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res}  9.7369
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}1.0000         {txt}Pr(|T| > |t|) = {res}0.0000          {txt}Pr(T > t) = {res}0.0000
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}engage
+{txt}Test for = {res}totalmembershipstrength
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 1.16e+07{col 34} 13681.75{col 46} 67026.62{col 58} 1.16e+07{col 70} 1.16e+07
+   {txt}newer {c |}{res}{col 12}     24{col 22} 1.17e+07{col 34} 5646.521{col 46} 27662.19{col 58} 1.17e+07{col 70} 1.17e+07
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 1.16e+07{col 34} 10335.18{col 46}  71604.2{col 58} 1.16e+07{col 70} 1.16e+07
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}  -100020{col 34} 14801.13{col 58}-129813.1{col 70}-70226.86
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res} -6.7576
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.0000         {txt}Pr(|T| > |t|) = {res}0.0000          {txt}Pr(T > t) = {res}1.0000
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}engage
+{txt}Test for = {res}totalcomments
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 146039.8{col 34} 132.2636{col 46} 647.9568{col 58} 145766.2{col 70} 146313.4
+   {txt}newer {c |}{res}{col 12}     24{col 22} 146984.4{col 34} 72.12833{col 46} 353.3552{col 58} 146835.2{col 70} 147133.6
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 146512.1{col 34} 101.4853{col 46} 703.1106{col 58} 146307.9{col 70} 146716.2
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}-944.5833{col 34} 150.6525{col 58}-1247.831{col 70}-641.3357
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res} -6.2699
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.0000         {txt}Pr(|T| > |t|) = {res}0.0000          {txt}Pr(T > t) = {res}1.0000
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}engage
+{txt}Test for = {res}mgmteffort
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 6755.667{col 34} 1.894564{col 46} 9.281429{col 58} 6751.747{col 70} 6759.586
+   {txt}newer {c |}{res}{col 12}     24{col 22} 6757.333{col 34} 1.708532{col 46} 8.370064{col 58} 6753.799{col 70} 6760.868
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22}   6756.5{col 34} 1.267781{col 46} 8.783447{col 58}  6753.95{col 70}  6759.05
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}-1.666667{col 34} 2.551167{col 58}  -6.8019{col 70} 3.468567
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res} -0.6533
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.2584         {txt}Pr(|T| > |t|) = {res}0.5168          {txt}Pr(T > t) = {res}0.7416
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}both
+{txt}Test for = {res}dropouts
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22}    2.125{col 34} .3474154{col 46} 1.701981{col 58} 1.406316{col 70} 2.843684
+   {txt}newer {c |}{res}{col 12}     24{col 22}        0{col 34}        0{col 46}        0{col 58}        0{col 70}        0
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22}   1.0625{col 34} .2314123{col 46} 1.603271{col 58} .5969586{col 70} 1.528041
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}    2.125{col 34} .3474154{col 58} 1.425689{col 70} 2.824311
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res}  6.1166
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}1.0000         {txt}Pr(|T| > |t|) = {res}0.0000          {txt}Pr(T > t) = {res}0.0000
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}both
+{txt}Test for = {res}totalmembershipstrength
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 1.17e+07{col 34} 9745.741{col 46} 47744.19{col 58} 1.17e+07{col 70} 1.17e+07
+   {txt}newer {c |}{res}{col 12}     24{col 22} 1.17e+07{col 34} 6234.556{col 46} 30542.96{col 58} 1.17e+07{col 70} 1.18e+07
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 1.17e+07{col 34} 6439.922{col 46} 44617.09{col 58} 1.17e+07{col 70} 1.17e+07
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}-40494.29{col 34} 11569.32{col 58}-63782.12{col 70}-17206.46
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res} -3.5001
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.0005         {txt}Pr(|T| > |t|) = {res}0.0010          {txt}Pr(T > t) = {res}0.9995
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}both
+{txt}Test for = {res}totalcomments
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 146616.1{col 34} 103.5839{col 46} 507.4554{col 58} 146401.8{col 70} 146830.4
+   {txt}newer {c |}{res}{col 12}     24{col 22}   147100{col 34} 72.30582{col 46} 354.2247{col 58} 146950.5{col 70} 147249.6
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 146858.1{col 34} 71.76469{col 46} 497.2004{col 58} 146713.7{col 70} 147002.5
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}-483.9167{col 34}  126.324{col 58}-738.1937{col 70}-229.6396
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res} -3.8308
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.0002         {txt}Pr(|T| > |t|) = {res}0.0004          {txt}Pr(T > t) = {res}0.9998
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}both
+{txt}Test for = {res}mgmteffort
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+more act {c |}{res}{col 12}     24{col 22} 7453.417{col 34} 1.433194{col 46} 7.021189{col 58} 7450.452{col 70} 7456.381
+   {txt}newer {c |}{res}{col 12}     24{col 22}  7451.75{col 34} 1.808044{col 46} 8.857569{col 58}  7448.01{col 70}  7455.49
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}     48{col 22} 7452.583{col 34} 1.147706{col 46} 7.951538{col 58} 7450.274{col 70} 7454.892
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22} 1.666667{col 34} 2.307177{col 58}-2.977441{col 70} 6.310774
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}more act{txt}) - mean({res}newer{txt})                           t = {res}  0.7224
+{txt}Ho: diff = 0                                     degrees of freedom = {res}      46
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.7631         {txt}Pr(|T| > |t|) = {res}0.4737          {txt}Pr(T > t) = {res}0.2369
+{txt}
+{com}. set more on
+{txt}
+{com}. log close
+      {txt}name:  {res}<unnamed>
+       {txt}log:  {res}/Users/albertocottica/github/local/community-management-simulator/Data/t-tests-by-priority-with-Stata.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res} 6 Aug 2017, 16:35:54
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}

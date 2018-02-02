@@ -22,11 +22,13 @@ to setup
   set decay 1 / 100
   set-default-shape turtles "circle"
   ;; the chooser is in terms of probabilities. These values enter the logistic function to generate those probabilities.
-  if global-chattiness = 0.01 [ set chattiness -4.59 ]
-  if global-chattiness = 0.02 [ set chattiness -3.892 ]
-  if global-chattiness = 0.1 [ set chattiness -2.196 ]
-  if global-chattiness = 0.2 [ set chattiness -1.386 ]
-  if global-chattiness = 0.4 [ set chattiness -0.405 ]
+  set chattiness -1 * ln ( ( 1 - global-chattiness) / global-chattiness ) ;; the inverse logistic
+;  if global-chattiness = 0.01 [ set chattiness -4.59 ]
+;  if global-chattiness = 0.02 [ set chattiness -3.892 ]
+;  if global
+;  if global-chattiness = 0.1 [ set chattiness -2.196 ]
+;  if global-chattiness = 0.2 [ set chattiness -1.386 ]
+;  if global-chattiness = 0.4 [ set chattiness -0.405 ]
   ;; the initial network is a clique of numerosity founders + 1 manager
   create-managers 1 [ set color red  set my-comments 0]
   repeat founders [
@@ -283,12 +285,24 @@ to-report idlist [in]
   report [who] of one-of members with [self = in]
 end
 
+to-report mychlist [in]
+  report [my-chattiness] of one-of members with [ self = in ]
+end
+
+to-report activelist [in]
+  report [active?] of one-of members with [self = in]
+end
+
 to-report mgmt-effort
   report [my-comments] of turtle 0
 end
 
 to-report effort-now
   report [current-comments] of turtle 0
+end
+
+to-report constrained
+  report [times-constrained] of turtle 0
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
@@ -391,7 +405,7 @@ SWITCH
 261
 onboard
 onboard
-0
+1
 1
 -1000
 
@@ -402,7 +416,7 @@ SWITCH
 261
 engage
 engage
-0
+1
 1
 -1000
 
@@ -432,23 +446,23 @@ SLIDER
 num-members
 num-members
 100
-1000
-600
+10000
+2050
 50
 1
 NIL
 HORIZONTAL
 
 SLIDER
-20
-10
-215
-43
+22
+12
+217
+45
 intimacy-strength
 intimacy-strength
 0
 50
-11
+3.3
 1
 1
 NIL
@@ -496,7 +510,7 @@ threshold
 threshold
 0
 5
-4
+5.2
 0.2
 1
 NIL
@@ -509,8 +523,8 @@ CHOOSER
 138
 global-chattiness
 global-chattiness
-0.01 0.02 0.1 0.2 0.4
-4
+0.01 0.02 0.05 0.1 0.2 0.4
+2
 
 SWITCH
 20
@@ -519,7 +533,7 @@ SWITCH
 302
 randomised-chattiness
 randomised-chattiness
-0
+1
 1
 -1000
 
@@ -531,7 +545,7 @@ CHOOSER
 priority
 priority
 "more active" "newer"
-0
+1
 
 CHOOSER
 21
@@ -541,7 +555,7 @@ CHOOSER
 capacity
 capacity
 1 2 10 50 100
-4
+3
 
 MONITOR
 1053
@@ -600,7 +614,6 @@ false
 "" ""
 PENS
 "default" 1.0 0 -16777216 true "" "if ticks > 2 [\n  plot effort-now\n  ]"
-"pen-1" 1.0 0 -2674135 true "" "plot capacity"
 
 @#$#@#$#@
 ## WHAT IS IT?
@@ -609,7 +622,7 @@ Online communities are a mix of bottom-up dynamics and top-down constraints and 
 
 Reflecting this dualism, agents in online community are also of two very different kinds. Most are ordinary members, who pursue their own individual objectives. A few are online community managers, who get paid to further the organisation's goal by creating engagement and mediating conflict. In doing so, the latter follow protocols: for example "leave a welcome comment to all new users".
 
-We assume that community managers are trying to make the community (a) more active (more throughput) (b) more inclusive (a more even distribution of network connectivity); (c) more diverse in its contributions (a more even distribution of the number of comments authored by each member). We also assume that ordinary users prefer to interact with their friends. Friendships are created by interacting on the community. In the model, we represent this phenomenon by a network of intimacy, following the approach in [2]. Intimacy is additive, and it decreases with time (unless a new communication event refreshes it).
+We assume that community managers are trying to make the community (a) more active (more throughput) (b) more inclusive (a more even distribution of network connectivity); (c) more diverse in its contributions (a more even distribution of the number of comments authored by each member); more loyal (stronger overall membership strength). We also assume that ordinary users prefer to interact with their friends. Friendships are created by interacting on the community. In the model, we represent this phenomenon by a network of intimacy, following the approach in [2]. Intimacy is additive, and it decreases with time (unless a new communication event refreshes it).
 
 We model the online community as a network of interaction, in turn underpinned by the aforementioned network of intimacy. Next, we explore how different community management protocols (henceforth "policies") affect the shape of both networks.
 
@@ -643,20 +656,20 @@ The world becomes very crowded very fast. Try running the model with updates tur
 
 These parameters control the characteristics and norms of the online community, viewed as a micro-society.
 
-* intimacy-strength: the preference members have to interact with their existing friends, as opposed to making new ones.
-* founders: the number of "founding members". These members are created during setup and are all connected to each other by "intimacy links representing friends.
-* chattiness: the baseline propensity of members to participate in the online conversation at each tick. If a member receives a comment now, she will be  20% more likely to write her own comment at the next tick.
-num-members: the number of members the community is supposed to reach. When it has * reached this level, the model stops.
-* randomised-chattiness: when set to "on", each member has a different chattiness level, drawn at random.
+* `intimacy-strength`: the preference members have to interact with their existing friends, as opposed to making new ones.
+* `founders`: the number of "founding members". These members are created during setup and are all connected to each other by intimacy links representing friendships.
+* `global-chattiness`: the baseline propensity of members to participate in the online conversation at each tick. If a member receives a comment now, she will be  20% more likely to write her own comment at the next tick.
+`num-members`: the number of members the community is supposed to reach. When it has * reached this level, the model stops.
+* `randomised-chattiness`: when set to "on", each member has a different chattiness level, drawn at random.
 
 ### "Policy" parameters
 
 These parameters control the actions of the community managers. Community managers make decisions based on algorithms ("policies"). You can select both the policies and some parameters influencing them
 
-* onboard: tell the community manager to leave a welcome comment to every new member, at the date at which they join.
-* engage: tell the community member to leave a feedback comment to every member that has left one or more comment during the previous tick.
-* capacity: set the maximal number of comments that the community manager can leave at any step.
-* priority: if the community manager is capacity constrained, this parameter tells her how to allocate her capacity. The choice is between interacting more with the most active community members (this could be more efficient in terms of generating more activity), or the newer ones (this could be more inclusive).
+* `onboard`: tell the community manager to leave a welcome comment to every new member, at the date at which they join.
+* `engage`: tell the community member to leave a feedback comment to every member that has left one or more comment during the previous tick.
+* `capacity`: set the maximal number of comments that the community manager can leave at any step.
+* `priority`: if the community manager is capacity constrained, this parameter tells her how to allocate her capacity. The choice is between interacting more with the most active community members (this could be more efficient in terms of generating more activity), or the newer ones (this could be more inclusive).
 
 ### Agent properties
 
@@ -680,8 +693,6 @@ Turn the policies of the community manager on and off. Do you see any improvemen
 
 
 ## EXTENDING THE MODEL
-
-Make  responsiveness an agent-specific variable. The expected (not very interesting) microlevel consequence is that the least responsive people drop out earlier: self-selection is at work, and people who stay engage in the community are those who enjoy online debate most. There could, however, be more interesting  consequences on the level of activity.
 
 
 ## NETLOGO FEATURES
@@ -1209,6 +1220,227 @@ NetLogo 5.3.1
     </enumeratedValueSet>
     <enumeratedValueSet variable="engage">
       <value value="true"/>
+    </enumeratedValueSet>
+  </experiment>
+  <experiment name="Intimacy_exclusion" repetitions="24" runMetricsEveryStep="false">
+    <setup>setup</setup>
+    <go>go</go>
+    <metric>total-membership-strength</metric>
+    <metric>total-comments</metric>
+    <metric>dropouts</metric>
+    <metric>mgmt-effort</metric>
+    <metric>map idlist sort members</metric>
+    <metric>map mslist sort members</metric>
+    <metric>map nclist sort members</metric>
+    <metric>map mychlist sort members</metric>
+    <enumeratedValueSet variable="capacity">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="engage">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="onboard">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="randomised-chattiness">
+      <value value="true"/>
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="threshold">
+      <value value="5.2"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="global-chattiness">
+      <value value="0.05"/>
+      <value value="0.4"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="priority">
+      <value value="&quot;more active&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="founders">
+      <value value="2"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="num-members">
+      <value value="600"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="intimacy-strength">
+      <value value="0.1"/>
+      <value value="3.3"/>
+      <value value="10"/>
+    </enumeratedValueSet>
+  </experiment>
+  <experiment name="reg_ms_id_my-chattiness" repetitions="24" runMetricsEveryStep="false">
+    <setup>setup</setup>
+    <go>go</go>
+    <metric>total-membership-strength</metric>
+    <metric>total-comments</metric>
+    <metric>dropouts</metric>
+    <metric>mgmt-effort</metric>
+    <metric>map idlist sort members</metric>
+    <metric>map mslist sort members</metric>
+    <metric>map nclist sort members</metric>
+    <metric>map mychlist sort members</metric>
+    <enumeratedValueSet variable="capacity">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="engage">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="onboard">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="randomised-chattiness">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="threshold">
+      <value value="5.2"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="global-chattiness">
+      <value value="0.05"/>
+      <value value="0.4"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="priority">
+      <value value="&quot;more active&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="founders">
+      <value value="2"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="num-members">
+      <value value="600"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="intimacy-strength">
+      <value value="0.1"/>
+      <value value="3.3"/>
+      <value value="10"/>
+    </enumeratedValueSet>
+  </experiment>
+  <experiment name="policy_effectiveness_onboard_2_1" repetitions="24" runMetricsEveryStep="false">
+    <setup>setup</setup>
+    <go>go</go>
+    <metric>total-membership-strength</metric>
+    <metric>total-comments</metric>
+    <metric>dropouts</metric>
+    <metric>mgmt-effort</metric>
+    <metric>map idlist sort members</metric>
+    <metric>map mslist sort members</metric>
+    <metric>map nclist sort members</metric>
+    <enumeratedValueSet variable="capacity">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="engage">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="onboard">
+      <value value="true"/>
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="randomised-chattiness">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="threshold">
+      <value value="5.2"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="global-chattiness">
+      <value value="0.05"/>
+      <value value="0.4"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="priority">
+      <value value="&quot;more active&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="founders">
+      <value value="2"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="num-members">
+      <value value="600"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="intimacy-strength">
+      <value value="0.1"/>
+      <value value="3.3"/>
+      <value value="10"/>
+    </enumeratedValueSet>
+  </experiment>
+  <experiment name="capacity_allocation_3_1" repetitions="24" runMetricsEveryStep="false">
+    <setup>setup</setup>
+    <go>go</go>
+    <metric>total-membership-strength</metric>
+    <metric>total-comments</metric>
+    <metric>dropouts</metric>
+    <metric>mgmt-effort</metric>
+    <metric>constrained</metric>
+    <metric>map idlist sort members</metric>
+    <metric>map mslist sort members</metric>
+    <metric>map nclist sort members</metric>
+    <metric>map mychlist sort members</metric>
+    <enumeratedValueSet variable="capacity">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="engage">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="onboard">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="randomised-chattiness">
+      <value value="false"/>
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="threshold">
+      <value value="5.2"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="global-chattiness">
+      <value value="0.05"/>
+      <value value="0.4"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="priority">
+      <value value="&quot;more active&quot;"/>
+      <value value="&quot;newer&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="founders">
+      <value value="2"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="num-members">
+      <value value="600"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="intimacy-strength">
+      <value value="0.1"/>
+      <value value="3.3"/>
+      <value value="10"/>
+    </enumeratedValueSet>
+  </experiment>
+  <experiment name="long-run_dropouts_vs_is" repetitions="16" runMetricsEveryStep="true">
+    <setup>setup</setup>
+    <go>go</go>
+    <metric>dropouts</metric>
+    <metric>total-comments</metric>
+    <metric>total-membership-strength</metric>
+    <metric>map idlist sort members</metric>
+    <enumeratedValueSet variable="randomised-chattiness">
+      <value value="false"/>
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="priority">
+      <value value="&quot;newer&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="onboard">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="global-chattiness">
+      <value value="0.05"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="engage">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="founders">
+      <value value="2"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="threshold">
+      <value value="5.2"/>
+    </enumeratedValueSet>
+    <steppedValueSet variable="intimacy-strength" first="0" step="1" last="10"/>
+    <enumeratedValueSet variable="num-members">
+      <value value="2000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="capacity">
+      <value value="50"/>
     </enumeratedValueSet>
   </experiment>
 </experiments>

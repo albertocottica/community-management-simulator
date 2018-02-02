@@ -1,0 +1,1045 @@
+{smcl}
+{txt}{sf}{ul off}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}/Users/albertocottica/github/local/community-management-simulator/Data/t-tests-by-policy-tstats-only.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res} 6 Aug 2017, 16:33:28
+{txt}
+{com}. set more off
+{txt}
+{com}. foreach c in float(.1) float(.2) float(.4) {c -(}
+{txt}  2{com}.         foreach i in 1 5 11 {c -(}
+{txt}  3{com}.                 foreach rand in "true" "false" {c -(}
+{txt}  4{com}.                         foreach pri in "newer" "more active" {c -(}
+{txt}  5{com}.                                 foreach var in dropouts totalmembershipstrength totalcomments mgmteffort {c -(}
+{txt}  6{com}.                                         display as text "globalchattiness = " as result `c'
+{txt}  7{com}.                                         display as text "intimacystrength = " as result `i'
+{txt}  8{com}.                                         display as text "randomisedchattiness = " as result "`rand'"
+{txt}  9{com}.                                         display as text "priority = " as result "`pri'"
+{txt} 10{com}.                                         display as text "Test for = " as result "`var'"
+{txt} 11{com}.                                         quietly ttest `var' if globalchattiness == `c' & intimacystrength == `i' & randomisedchattines == "`rand'" ///
+>                                         & priority == "`pri'", by(policy)
+{txt} 12{com}.                                         display as text "T = " as result r(t)
+{txt} 13{com}.                                         display " "
+{txt} 14{com}.                                         {c )-}
+{txt} 15{com}.                                 {c )-}
+{txt} 16{com}.                         {c )-}
+{txt} 17{com}.                 {c )-}
+{txt} 18{com}.         {c )-}
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}newer
+{txt}Test for = {res}dropouts
+{txt}T = {res}.
+ 
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}newer
+{txt}Test for = {res}totalmembershipstrength
+{txt}T = {res}5.6803234
+ 
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}newer
+{txt}Test for = {res}totalcomments
+{txt}T = {res}1.2341625
+ 
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}newer
+{txt}Test for = {res}mgmteffort
+{txt}T = {res}161.57632
+ 
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}more active
+{txt}Test for = {res}dropouts
+{txt}T = {res}-1.9685969
+ 
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}more active
+{txt}Test for = {res}totalmembershipstrength
+{txt}T = {res}5.4299511
+ 
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}more active
+{txt}Test for = {res}totalcomments
+{txt}T = {res}.10891445
+ 
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}more active
+{txt}Test for = {res}mgmteffort
+{txt}T = {res}164.46585
+ 
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}newer
+{txt}Test for = {res}dropouts
+{txt}T = {res}.
+ 
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}newer
+{txt}Test for = {res}totalmembershipstrength
+{txt}T = {res}8.6768614
+ 
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}newer
+{txt}Test for = {res}totalcomments
+{txt}T = {res}-.20954628
+ 
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}newer
+{txt}Test for = {res}mgmteffort
+{txt}T = {res}176.96849
+ 
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}more active
+{txt}Test for = {res}dropouts
+{txt}T = {res}-1.7999483
+ 
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}more active
+{txt}Test for = {res}totalmembershipstrength
+{txt}T = {res}7.4077602
+ 
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}more active
+{txt}Test for = {res}totalcomments
+{txt}T = {res}.51282785
+ 
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}more active
+{txt}Test for = {res}mgmteffort
+{txt}T = {res}187.04872
+ 
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}newer
+{txt}Test for = {res}dropouts
+{txt}T = {res}-1
+ 
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}newer
+{txt}Test for = {res}totalmembershipstrength
+{txt}T = {res}4.4482937
+ 
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}newer
+{txt}Test for = {res}totalcomments
+{txt}T = {res}.1660036
+ 
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}newer
+{txt}Test for = {res}mgmteffort
+{txt}T = {res}145.14807
+ 
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}more active
+{txt}Test for = {res}dropouts
+{txt}T = {res}-3.9464179
+ 
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}more active
+{txt}Test for = {res}totalmembershipstrength
+{txt}T = {res}7.5616833
+ 
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}more active
+{txt}Test for = {res}totalcomments
+{txt}T = {res}1.9631579
+ 
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}more active
+{txt}Test for = {res}mgmteffort
+{txt}T = {res}188.90583
+ 
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}newer
+{txt}Test for = {res}dropouts
+{txt}T = {res}.
+ 
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}newer
+{txt}Test for = {res}totalmembershipstrength
+{txt}T = {res}6.483973
+ 
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}newer
+{txt}Test for = {res}totalcomments
+{txt}T = {res}-.69893945
+ 
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}newer
+{txt}Test for = {res}mgmteffort
+{txt}T = {res}185.16921
+ 
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}more active
+{txt}Test for = {res}dropouts
+{txt}T = {res}-4.8655448
+ 
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}more active
+{txt}Test for = {res}totalmembershipstrength
+{txt}T = {res}7.7583435
+ 
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}more active
+{txt}Test for = {res}totalcomments
+{txt}T = {res}.66458112
+ 
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}more active
+{txt}Test for = {res}mgmteffort
+{txt}T = {res}183.9622
+ 
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}newer
+{txt}Test for = {res}dropouts
+{txt}T = {res}-1.1708377
+ 
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}newer
+{txt}Test for = {res}totalmembershipstrength
+{txt}T = {res}4.1466232
+ 
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}newer
+{txt}Test for = {res}totalcomments
+{txt}T = {res}.09163945
+ 
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}newer
+{txt}Test for = {res}mgmteffort
+{txt}T = {res}178.73513
+ 
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}more active
+{txt}Test for = {res}dropouts
+{txt}T = {res}-8.6525113
+ 
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}more active
+{txt}Test for = {res}totalmembershipstrength
+{txt}T = {res}9.2820386
+ 
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}more active
+{txt}Test for = {res}totalcomments
+{txt}T = {res}6.1593349
+ 
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}more active
+{txt}Test for = {res}mgmteffort
+{txt}T = {res}156.456
+ 
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}newer
+{txt}Test for = {res}dropouts
+{txt}T = {res}.
+ 
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}newer
+{txt}Test for = {res}totalmembershipstrength
+{txt}T = {res}5.7658507
+ 
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}newer
+{txt}Test for = {res}totalcomments
+{txt}T = {res}-1.8847448
+ 
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}newer
+{txt}Test for = {res}mgmteffort
+{txt}T = {res}163.31331
+ 
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}more active
+{txt}Test for = {res}dropouts
+{txt}T = {res}-9.8342731
+ 
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}more active
+{txt}Test for = {res}totalmembershipstrength
+{txt}T = {res}11.412622
+ 
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}more active
+{txt}Test for = {res}totalcomments
+{txt}T = {res}8.5009647
+ 
+{txt}globalchattiness = {res}.1
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}more active
+{txt}Test for = {res}mgmteffort
+{txt}T = {res}207.75765
+ 
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}newer
+{txt}Test for = {res}dropouts
+{txt}T = {res}.
+ 
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}newer
+{txt}Test for = {res}totalmembershipstrength
+{txt}T = {res}3.4290049
+ 
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}newer
+{txt}Test for = {res}totalcomments
+{txt}T = {res}.98484795
+ 
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}newer
+{txt}Test for = {res}mgmteffort
+{txt}T = {res}172.24143
+ 
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}more active
+{txt}Test for = {res}dropouts
+{txt}T = {res}-1
+ 
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}more active
+{txt}Test for = {res}totalmembershipstrength
+{txt}T = {res}2.3206442
+ 
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}more active
+{txt}Test for = {res}totalcomments
+{txt}T = {res}-.29692727
+ 
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}more active
+{txt}Test for = {res}mgmteffort
+{txt}T = {res}178.01337
+ 
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}newer
+{txt}Test for = {res}dropouts
+{txt}T = {res}.
+ 
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}newer
+{txt}Test for = {res}totalmembershipstrength
+{txt}T = {res}7.3179095
+ 
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}newer
+{txt}Test for = {res}totalcomments
+{txt}T = {res}.93367132
+ 
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}newer
+{txt}Test for = {res}mgmteffort
+{txt}T = {res}196.18552
+ 
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}more active
+{txt}Test for = {res}dropouts
+{txt}T = {res}.
+ 
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}more active
+{txt}Test for = {res}totalmembershipstrength
+{txt}T = {res}6.735734
+ 
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}more active
+{txt}Test for = {res}totalcomments
+{txt}T = {res}-.31939677
+ 
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}more active
+{txt}Test for = {res}mgmteffort
+{txt}T = {res}218.85416
+ 
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}newer
+{txt}Test for = {res}dropouts
+{txt}T = {res}.
+ 
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}newer
+{txt}Test for = {res}totalmembershipstrength
+{txt}T = {res}.90528827
+ 
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}newer
+{txt}Test for = {res}totalcomments
+{txt}T = {res}-.83519724
+ 
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}newer
+{txt}Test for = {res}mgmteffort
+{txt}T = {res}162.73408
+ 
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}more active
+{txt}Test for = {res}dropouts
+{txt}T = {res}-2.1135503
+ 
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}more active
+{txt}Test for = {res}totalmembershipstrength
+{txt}T = {res}2.0326381
+ 
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}more active
+{txt}Test for = {res}totalcomments
+{txt}T = {res}.06045384
+ 
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}more active
+{txt}Test for = {res}mgmteffort
+{txt}T = {res}178.75245
+ 
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}newer
+{txt}Test for = {res}dropouts
+{txt}T = {res}.
+ 
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}newer
+{txt}Test for = {res}totalmembershipstrength
+{txt}T = {res}9.9349602
+ 
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}newer
+{txt}Test for = {res}totalcomments
+{txt}T = {res}1.2507985
+ 
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}newer
+{txt}Test for = {res}mgmteffort
+{txt}T = {res}205.11549
+ 
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}more active
+{txt}Test for = {res}dropouts
+{txt}T = {res}-1.9416813
+ 
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}more active
+{txt}Test for = {res}totalmembershipstrength
+{txt}T = {res}5.6061405
+ 
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}more active
+{txt}Test for = {res}totalcomments
+{txt}T = {res}.12711557
+ 
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}more active
+{txt}Test for = {res}mgmteffort
+{txt}T = {res}231.9093
+ 
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}newer
+{txt}Test for = {res}dropouts
+{txt}T = {res}.
+ 
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}newer
+{txt}Test for = {res}totalmembershipstrength
+{txt}T = {res}1.9107811
+ 
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}newer
+{txt}Test for = {res}totalcomments
+{txt}T = {res}-.92676545
+ 
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}newer
+{txt}Test for = {res}mgmteffort
+{txt}T = {res}171.05058
+ 
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}more active
+{txt}Test for = {res}dropouts
+{txt}T = {res}-6.2126648
+ 
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}more active
+{txt}Test for = {res}totalmembershipstrength
+{txt}T = {res}3.6919045
+ 
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}more active
+{txt}Test for = {res}totalcomments
+{txt}T = {res}1.4176972
+ 
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}more active
+{txt}Test for = {res}mgmteffort
+{txt}T = {res}225.55558
+ 
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}newer
+{txt}Test for = {res}dropouts
+{txt}T = {res}.
+ 
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}newer
+{txt}Test for = {res}totalmembershipstrength
+{txt}T = {res}5.5582846
+ 
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}newer
+{txt}Test for = {res}totalcomments
+{txt}T = {res}-.62255217
+ 
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}newer
+{txt}Test for = {res}mgmteffort
+{txt}T = {res}198.69102
+ 
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}more active
+{txt}Test for = {res}dropouts
+{txt}T = {res}-6.8995626
+ 
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}more active
+{txt}Test for = {res}totalmembershipstrength
+{txt}T = {res}9.2079479
+ 
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}more active
+{txt}Test for = {res}totalcomments
+{txt}T = {res}4.7893537
+ 
+{txt}globalchattiness = {res}.2
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}more active
+{txt}Test for = {res}mgmteffort
+{txt}T = {res}220.41442
+ 
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}newer
+{txt}Test for = {res}dropouts
+{txt}T = {res}.
+ 
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}newer
+{txt}Test for = {res}totalmembershipstrength
+{txt}T = {res}2.0894045
+ 
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}newer
+{txt}Test for = {res}totalcomments
+{txt}T = {res}1.1322933
+ 
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}newer
+{txt}Test for = {res}mgmteffort
+{txt}T = {res}265.16023
+ 
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}more active
+{txt}Test for = {res}dropouts
+{txt}T = {res}.
+ 
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}more active
+{txt}Test for = {res}totalmembershipstrength
+{txt}T = {res}1.6076324
+ 
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}more active
+{txt}Test for = {res}totalcomments
+{txt}T = {res}.64957656
+ 
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}more active
+{txt}Test for = {res}mgmteffort
+{txt}T = {res}230.50465
+ 
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}newer
+{txt}Test for = {res}dropouts
+{txt}T = {res}.
+ 
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}newer
+{txt}Test for = {res}totalmembershipstrength
+{txt}T = {res}7.0910378
+ 
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}newer
+{txt}Test for = {res}totalcomments
+{txt}T = {res}.87115952
+ 
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}newer
+{txt}Test for = {res}mgmteffort
+{txt}T = {res}332.83649
+ 
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}more active
+{txt}Test for = {res}dropouts
+{txt}T = {res}.
+ 
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}more active
+{txt}Test for = {res}totalmembershipstrength
+{txt}T = {res}4.9290204
+ 
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}more active
+{txt}Test for = {res}totalcomments
+{txt}T = {res}.02469889
+ 
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}1
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}more active
+{txt}Test for = {res}mgmteffort
+{txt}T = {res}313.75139
+ 
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}newer
+{txt}Test for = {res}dropouts
+{txt}T = {res}.
+ 
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}newer
+{txt}Test for = {res}totalmembershipstrength
+{txt}T = {res}.31349102
+ 
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}newer
+{txt}Test for = {res}totalcomments
+{txt}T = {res}-1.0234649
+ 
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}newer
+{txt}Test for = {res}mgmteffort
+{txt}T = {res}215.63483
+ 
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}more active
+{txt}Test for = {res}dropouts
+{txt}T = {res}-2.3797724
+ 
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}more active
+{txt}Test for = {res}totalmembershipstrength
+{txt}T = {res}.05539454
+ 
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}more active
+{txt}Test for = {res}totalcomments
+{txt}T = {res}-1.1726261
+ 
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}more active
+{txt}Test for = {res}mgmteffort
+{txt}T = {res}224.69336
+ 
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}newer
+{txt}Test for = {res}dropouts
+{txt}T = {res}.
+ 
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}newer
+{txt}Test for = {res}totalmembershipstrength
+{txt}T = {res}4.9571058
+ 
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}newer
+{txt}Test for = {res}totalcomments
+{txt}T = {res}-2.423554
+ 
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}newer
+{txt}Test for = {res}mgmteffort
+{txt}T = {res}301.00738
+ 
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}more active
+{txt}Test for = {res}dropouts
+{txt}T = {res}-1.5915526
+ 
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}more active
+{txt}Test for = {res}totalmembershipstrength
+{txt}T = {res}8.2186349
+ 
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}more active
+{txt}Test for = {res}totalcomments
+{txt}T = {res}1.8918645
+ 
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}5
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}more active
+{txt}Test for = {res}mgmteffort
+{txt}T = {res}285.5431
+ 
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}newer
+{txt}Test for = {res}dropouts
+{txt}T = {res}.
+ 
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}newer
+{txt}Test for = {res}totalmembershipstrength
+{txt}T = {res}.81685289
+ 
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}newer
+{txt}Test for = {res}totalcomments
+{txt}T = {res}-.41635032
+ 
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}newer
+{txt}Test for = {res}mgmteffort
+{txt}T = {res}203.14177
+ 
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}more active
+{txt}Test for = {res}dropouts
+{txt}T = {res}-5.8757049
+ 
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}more active
+{txt}Test for = {res}totalmembershipstrength
+{txt}T = {res}1.0281157
+ 
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}more active
+{txt}Test for = {res}totalcomments
+{txt}T = {res}-.22765397
+ 
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}true
+{txt}priority = {res}more active
+{txt}Test for = {res}mgmteffort
+{txt}T = {res}234.37395
+ 
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}newer
+{txt}Test for = {res}dropouts
+{txt}T = {res}.
+ 
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}newer
+{txt}Test for = {res}totalmembershipstrength
+{txt}T = {res}7.4027905
+ 
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}newer
+{txt}Test for = {res}totalcomments
+{txt}T = {res}1.1325386
+ 
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}newer
+{txt}Test for = {res}mgmteffort
+{txt}T = {res}279.15238
+ 
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}more active
+{txt}Test for = {res}dropouts
+{txt}T = {res}-5.2908189
+ 
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}more active
+{txt}Test for = {res}totalmembershipstrength
+{txt}T = {res}7.2505494
+ 
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}more active
+{txt}Test for = {res}totalcomments
+{txt}T = {res}3.4305987
+ 
+{txt}globalchattiness = {res}.40000001
+{txt}intimacystrength = {res}11
+{txt}randomisedchattiness = {res}false
+{txt}priority = {res}more active
+{txt}Test for = {res}mgmteffort
+{txt}T = {res}293.71677
+ 
+{txt}
+{com}. log close
+      {txt}name:  {res}<unnamed>
+       {txt}log:  {res}/Users/albertocottica/github/local/community-management-simulator/Data/t-tests-by-policy-tstats-only.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res} 6 Aug 2017, 16:33:31
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}
